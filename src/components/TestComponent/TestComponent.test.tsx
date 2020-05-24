@@ -4,11 +4,8 @@ import { render } from "@testing-library/react";
 import TestComponent from "./TestComponent";
 
 describe("Test Component", () => {
-
-  const renderComponent = () => render(<TestComponent className="TestClass" data-testid="test-component" />);
-
   it("simple render", () => {
-    const { getByTestId } = renderComponent();
+    const { getByTestId } = render(<TestComponent className="TestClass" data-testid="test-component" />);
 
     expect(getByTestId("test-component")).toBeInTheDocument();
   });
