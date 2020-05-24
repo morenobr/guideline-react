@@ -23,7 +23,8 @@
   "files": [
     "index*",
     "components",
-    "componentsStyled"
+    "componentsStyled",
+    "styles"
   ],
   "repository": {
     "type": "git",

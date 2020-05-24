@@ -94,6 +94,18 @@ export default [
     external: externalComponent,
     plugins: pluginsComponents,
   })),
+  ...componentNames.map((componentName) => ({
+    input: `src/styles/${componentName}.scss`,
+    output: {
+      file: `${dirCjs}/index.js`,//Replaced by next cjs build
+      format: 'es'
+    },
+    plugins: [
+      sass({
+        output: `styles/${componentName}.css`,
+      }),
+    ],
+  })),
   {
     input: "src/index.ts",
     output: [

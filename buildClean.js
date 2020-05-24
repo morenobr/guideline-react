@@ -10,4 +10,9 @@ fileDirList.forEach(fileOrDir => {
       recursive: true,
     })
   }
+  if(/^styles?$/.test(fileOrDir)){
+    fs.rmdirSync(fileOrDir, {
+      recursive: true,
+    })
+  }
 });
