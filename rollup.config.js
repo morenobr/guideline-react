@@ -36,7 +36,7 @@ const plugins = (tsconfigOverride) => [
 ];
 const dirCjs = tsconfig.compilerOptions.declarationDir;
 const externals = ["react", "react-dom"];
-const componentNames = ["TestComponent"];
+const componentNames = ["TestComponent", "Button"];
 const externalComponent = (id) => {
   const regexExternals = new RegExp(
     "^(\\.\\.\\/)+(" + externals.join("|") + ")$"
