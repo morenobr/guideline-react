@@ -25,7 +25,8 @@
     "index*",
     "components",
     "componentsStyled",
-    "styles"
+    "styles",
+    "hooks"
   ],
   "repository": {
     "type": "git",
