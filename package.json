@@ -47,8 +47,6 @@
   "homepage": "https://github.com/morenobr/moreno-guideline#readme",
   "devDependencies": {
     "@babel/core": "^7.9.6",
-    "@material/button": "^6.0.0",
-    "@material/icon-button": "^6.0.0",
     "@storybook/react": "^5.3.18",
     "@testing-library/jest-dom": "^5.8.0",
     "@testing-library/react": "^10.0.4",

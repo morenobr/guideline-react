@@ -14,6 +14,6 @@ export default (props:ButtonStyledProps) => {
   });
   
   return (
-    <Button {...props} className={`mdc-button${props.className?` ${props.className}`:''}`} />
+    <Button {...props} className={`mg-button${props.className?` ${props.className}`:''}`} />
   );
 }

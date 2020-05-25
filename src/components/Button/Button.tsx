@@ -19,23 +19,23 @@ const Button = ({
   const ref = useRef(null as HTMLButtonElement|null);
   const classes = {
     [className]: true,
-    [`${className}--outlined`]: outlined,
-    [`${className}--raised`]: raised,
+    outlined: outlined,
+    raised: raised,
   }
   const classNamesApplied = Object.keys(classes).filter(k => !!classes[k]).join(' ');
   useEffectClassNameSvg({
-    classIcon: `${className}__icon`,
+    classIcon: `icon`,
     ref,
     IconSvg: icon && !(icon instanceof String)? (icon as React.SVGAttributes<SVGElement>):undefined,
   })
   
   const CompButton = (
     <button ref={ref} className={classNamesApplied} {...otherProps}>
-        <div className={`${className}__ripple`}></div>
-        {icon && typeof icon === "string" && <i className={`material-icons ${className}__icon`} aria-hidden="true">{icon}</i>}
+        <div className="ripple"></div>
+        {icon && typeof icon === "string" && <i className="material-icons icon" aria-hidden="true">{icon}</i>}
         {icon && typeof icon !== "string" && icon}
-        <span className={`${className}__label`}>{label}</span>
-        {touch && <div className={`${className}__touch`}></div>}
+        <span className="label">{label}</span>
+        {touch && <div className="touch"></div>}
     </button>
   );
   if(touch){
