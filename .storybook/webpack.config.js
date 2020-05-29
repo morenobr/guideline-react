@@ -17,7 +17,8 @@ module.exports = ({ config }) => {
         options: {
           implementation: require('sass'),
           sassOptions: {
-            includePaths: ['node_modules'],
+            includePaths: [`${path.resolve(__dirname, "..", "node_modules")}/`],
+            importer: (url)=> ({ file: url }),
           },
           sourceMap: true,
         },
