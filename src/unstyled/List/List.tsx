@@ -18,10 +18,10 @@ const List = ({
 }: ListPropsWithClassname) => {
   const classes = {
     [className]: true,
-    [`${className}--non-interactive`]: nonInteractive,
-    [`${className}--dense`]: dense,
-    [`${className}--avatar-list`]: avatarList,
-    [`${className}--two-line`]: twoLine,
+    'non-interactive': nonInteractive,
+    dense: dense,
+    'avatar-list': avatarList,
+    'two-line': twoLine,
   }
   const classNamesApplied = Object.keys(classes).filter(k => !!classes[k]).join(' ');
   return (

@@ -72,14 +72,14 @@
     cursor: inherit;
   }
 
-  > .mg-list-item__text {
+  > .text {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     &[for] {
       pointer-events: none;
     }
-    > .mg-list-item__primary-text {
+    > .primary-text {
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
@@ -102,7 +102,7 @@
         vertical-align: -20px;
       }
     }
-    > .mg-list-item__secondary-text {
+    > .secondary-text {
       color: $secondary-on-background;
       color: var(--secondary-on-background, $secondary-on-background);
       -moz-osx-font-smoothing: grayscale;
@@ -136,7 +136,7 @@
       }
     }
   }
-  > .mg-list-item__graphic {
+  > .left {
     background-color: transparent;
     color: $icon-on-background;
     color: var(--icon-on-background, $icon-on-background);
@@ -150,7 +150,7 @@
     fill: currentColor;
     display: inline-flex;
   }
-  > .mg-list-item__meta {
+  > .right {
     color: $hint-on-background;
     color: var(--hint-on-background, $hint-on-background);
     margin-left: auto;
@@ -176,13 +176,13 @@
   }
 
   // List Item variants
-  &.mg-list-item--disabled{
-    > .mg-list-item__text {
+  &.disabled{
+    > .text {
       opacity: 0.38;
     }
-    > .mg-list-item__text,
-    > .mg-list-item__primary-text,
-    > .mg-list-item__secondary-text {
+    > .text,
+    > .primary-text,
+    > .secondary-text {
       color: $on-surface;
       color: var(--on-surface, $on-surface);
     }
@@ -193,11 +193,11 @@
     outline: none;
   }
   
-  &.mg-list-item--selected,
-  &.mg-list-item--activated {
+  &.selected,
+  &.activated {
     color: $primary;
     color: var(--primary, $primary);
-    > .mg-list-item__graphic {
+    > .left {
       color: $primary;
       color: var(--primary, $primary);
     }
@@ -205,11 +205,11 @@
 
   //dirs
   &[dir=rtl]{
-    > .mg-list-item__graphic {
+    > .left {
       margin-left: 32px;
       margin-right: 0;
     }
-    > .mg-list-item__meta {
+    > .right {
       margin-left: 0;
       margin-right: auto;
     }
@@ -225,51 +225,51 @@
 
 // dirs
 .mg-list[dir=rtl] > .mg-list-item {
-  > .mg-list-item__meta {
+  > .right {
     margin-left: 0;
     margin-right: auto;
   }
-  > .mg-list-item__graphic {
+  > .left {
     margin-left: 32px;
     margin-right: 0;
   }
 }
 
 // variants
-.mg-list.mg-list--avatar-list{
+.mg-list.avatar-list{
   >.mg-list-item {
     height: 56px;
-    > .mg-list-item__graphic {
+    > .left {
       margin-left: 0;
       margin-right: 16px;
       width: 40px;
       height: 40px;
       border-radius: 50%;
     }
-    &[dir=rtl] > .mg-list-item__graphic {
+    &[dir=rtl] > .left {
       margin-left: 16px;
       margin-right: 0;
     }
   }
 }
 
-.mg-list.mg-list--two-line{
+.mg-list.two-line{
   > .mg-list-item {
     height: 72px;
-    > .mg-list-item__text {
+    > .text {
       align-self: flex-start;
     }
   }
 }
 
-.mg-list.mg-list--dense {
+.mg-list.dense {
   padding-top: 4px;
   padding-bottom: 4px;
   font-size: 0.812rem;
   > .mg-list-item {
     height: 40px;
-    > .mg-list-item__text {
-      > .mg-list-item__primary-text {
+    > .text {
+      > .primary-text {
         display: block;
         margin-top: 0;
         line-height: normal;
@@ -289,11 +289,11 @@
           vertical-align: -20px;
         }
       }
-      > .mg-list-item__secondary-text {
+      > .secondary-text {
         font-size: inherit;
       }
     }
-    > .mg-list-item__graphic {
+    > .left {
       margin-left: 0;
       margin-right: 36px;
       width: 20px;
@@ -301,17 +301,17 @@
     }
 
     //dirs
-    &[dir=rtl] > .mg-list-item__graphic {
+    &[dir=rtl] > .left {
       margin-left: 36px;
       margin-right: 0;
     }
   }
 }
 
-.mg-list:not(.mg-list--non-interactive){
+.mg-list:not(.non-interactive){
   > .mg-list-item {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    &:not(.mg-list-item--disabled){
+    &:not(.disabled){
       cursor: pointer;
       &::before,
       &::after {
@@ -344,7 +344,7 @@
         transition-duration: 75ms;
         opacity: 0.12;
       }
-      &.mg-list-item--activated{
+      &.activated{
         &::before, 
         &::after {
           background-color: $primary;
@@ -369,7 +369,7 @@
           opacity: 0.24;
         }
       }
-      &.mg-list-item--selected{
+      &.selected{
         &::before, 
         &::after {
           background-color: $primary;
@@ -395,7 +395,7 @@
 
       }
     }
-    &.mg-list-item--disabled{
+    &.disabled{
       &::before, 
       &::after {
         position: absolute;
@@ -425,21 +425,21 @@
 
 .mg-list {
   // multiple variants together
-  &.mg-list--dense.mg-list--two-line,
-  &.mg-list--dense.mg-list--avatar-list {
+  &.dense.two-line,
+  &.dense.avatar-list {
     > .mg-list-item {
       height: 60px;
     }
   }
-  &.mg-list--dense.mg-list--avatar-list > .mg-list-item {
-    > .mg-list-item__graphic {
+  &.dense.avatar-list > .mg-list-item {
+    > .left {
       margin-left: 0;
       margin-right: 20px;
       width: 36px;
       height: 36px;
     }
 
-    &[dir=rtl] > .mg-list-item__graphic {
+    &[dir=rtl] > .left {
       margin-left: 20px;
       margin-right: 0;
     }
@@ -456,15 +456,15 @@
 
   // variants
 
-  &.mg-list-divider--padded {
+  &.padded {
     margin: 0 16px;
   }
-  &.mg-list-divider--inset {
+  &.inset {
     margin-left: 72px;
     margin-right: 0;
     width: calc(100% - 72px);
   }
-  &.mg-list-divider--inset.mg-list-divider--padded {
+  &.inset.padded {
     width: calc(100% - 72px - 16px);
   }
 }
@@ -482,7 +482,7 @@
   --subtitle1-text-decoration: #{$subtitle1-text-decoration};
   --subtitle1-text-transform: #{$subtitle1-text-transform};
 
-  > .mg-list-group__subheader {
+  > .subheader {
     color: $primary-on-background;
     color: var(--primary-on-background, $primary-on-background);
 
@@ -510,7 +510,7 @@
 }
 
 //ListGroup dirs
-.mg-list-group[dir=rtl] > .mg-list-divider--inset {
+.mg-list-group[dir=rtl] > .inset {
   margin-left: 0;
   margin-right: 72px;
 }

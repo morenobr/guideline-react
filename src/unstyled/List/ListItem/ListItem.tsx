@@ -22,9 +22,9 @@ const ListItem = ({
 }: ListItemPropsWithClassname) => {
   const classes = {
     [className]: true,
-    [`${className}--selected`]: selected,
-    [`${className}--disabled`]: disabled,
-    [`${className}--activated`]: activated,
+    selected: selected,
+    disabled: disabled,
+    activated: activated,
   }
   const classNamesApplied = Object.keys(classes).filter(k => !!classes[k]).join(' ');
   const TextTag = (labelFor)?'label':'span';
@@ -35,17 +35,17 @@ const ListItem = ({
       aria-selected={withSelection?selected:undefined}
       tabIndex={tabIndex}
       {...otherProps}>
-      {contentLeft && <span className={`${className}__graphic`}>{contentLeft}</span>}
-      <TextTag className={`${className}__text`} htmlFor={labelFor}>
+      {contentLeft && <span className="left">{contentLeft}</span>}
+      <TextTag className="text" htmlFor={labelFor}>
         {text && !secondaryText && text}
         {text && secondaryText && (
           <>
-            <span className={`${className}__primary-text`}>{text}</span>
-            <span className={`${className}__secondary-text`}>{secondaryText}</span>
+            <span className="primary-text">{text}</span>
+            <span className="secondary-text">{secondaryText}</span>
           </>
         )}
       </TextTag>
-      {contentRight && <span className={`${className}__meta`}>{contentRight}</span>}
+      {contentRight && <span className="right">{contentRight}</span>}
     </li>
   );
 }

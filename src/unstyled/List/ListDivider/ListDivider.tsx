@@ -14,8 +14,8 @@ const ListDivider = ({
 }: ListDividerPropsWithClassname) => {
   const classes = {
     [className]: true,
-    [`${className}--padded`]: padded,
-    [`${className}--inset`]: inset,
+    padded: padded,
+    inset: inset,
   }
   const classNamesApplied = Object.keys(classes).filter(k => !!classes[k]).join(' ');
   if(asItem){

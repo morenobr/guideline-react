@@ -10,12 +10,8 @@ const ListGroup = ({
   children,
   ...otherProps
 }: ListItemPropsWithClassname) => {
-  const classes = {
-    [className]: true,
-  }
-  const classNamesApplied = Object.keys(classes).filter(k => !!classes[k]).join(' ');
   return (
-    <div className={classNamesApplied} {...otherProps}>{children}</div>
+    <div className={className} {...otherProps}>{children}</div>
   );
 }
 
