@@ -5,10 +5,10 @@ export default {
   title: "IconButtonToogle"
 };
 const svgActive = <svg height="100" width="100" viewBox="0 0 100 100">
-  <circle cx="50" cy="50" r="40" stroke-width="3" />
+  <circle cx="50" cy="50" r="40" strokeWidth="3" />
 </svg>;
 const svgInactive = <svg height="100" width="100" viewBox="0 0 100 100">
-  <circle cx="50" cy="50" r="40" stroke-width="3"  stroke="currentColor" fill="none" />
+  <circle cx="50" cy="50" r="40" strokeWidth="3"  stroke="currentColor" fill="none" />
 </svg>;
 
 export const Basic = () => (

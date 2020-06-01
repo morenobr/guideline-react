@@ -36,7 +36,8 @@
     "Button",
     "FloatingActionButton",
     "IconButton",
-    "IconButtonToogle"
+    "IconButtonToogle",
+    "List"
   ],
   "repository": {
     "type": "git",

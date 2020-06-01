@@ -5,7 +5,7 @@ export default {
   title: "IconButton"
 };
 const svg = <svg height="100" width="100" viewBox="0 0 100 100">
-  <circle cx="50" cy="50" r="40" stroke-width="3" />
+  <circle cx="50" cy="50" r="40" strokeWidth="3" />
 </svg>
 
 export const Basic = () => (
