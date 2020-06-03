@@ -3,10 +3,13 @@ import commonjs from "rollup-plugin-commonjs";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import resolve from "rollup-plugin-node-resolve";
 import sass from "rollup-plugin-sass";
+import sassRuntime from 'sass';
 import { terser } from "rollup-plugin-terser";
 
 import packageJson from "./package.json";
 import tsconfig from "./tsconfig.json";
+
+const minify = true;
 
 const plugins = (tsconfigOverride) => [
   peerDepsExternal(),
@@ -22,26 +25,18 @@ const plugins = (tsconfigOverride) => [
     },
   }),
   commonjs(),
-  // {
-  //   include: ['node_modules/**'],
-  //   namedExports: {
-  //     'node_modules/react/react.js': [
-  //       'Children',
-  //       'Component',
-  //       'PropTypes',
-  //       'createElement'
-  //     ],
-  //     'node_modules/react-dom/index.js': ['render']
-  //   }
-  // }
   sass({
-    insert: true,
+    runtime: sassRuntime,
+    options: {
+      includePaths: ['node_modules'],
+      outputStyle: minify?'compressed':'expanded',
+    }
   }),
-  terser(),
+  ...(minify?[terser()]:[]),
 ];
 const dirCjs = tsconfig.compilerOptions.declarationDir;
 const externals = ["react", "react-dom"];
-const componentNames = ["TestComponent"];
+const componentNames = ["TestComponent", "Button"];
 const externalComponent = (id) => {
   const regexExternals = new RegExp(
     "^(\\.\\.\\/)+(" + externals.join("|") + ")$"
@@ -103,6 +98,11 @@ export default [
     plugins: [
       sass({
         output: `styles/${componentName}.css`,
+        runtime: sassRuntime,
+        options: {
+          includePaths: ['node_modules'],
+          outputStyle: minify?'compressed':'expanded',
+        }
       }),
     ],
   })),

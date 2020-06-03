@@ -9,7 +9,21 @@ module.exports = ({ config }) => {
   },
   config.module.rules.push({
     test: /\.scss$/,
-    use: ["style-loader", "css-loader", "sass-loader"],
+    use: [
+      "style-loader",
+      "css-loader",
+      {
+        loader: require.resolve("sass-loader"),
+        options: {
+          implementation: require('sass'),
+          sassOptions: {
+            includePaths: [`${path.resolve(__dirname, "..", "node_modules")}/`],
+            importer: (url)=> ({ file: url }),
+          },
+          sourceMap: true,
+        },
+      }
+    ],
     include: path.resolve(__dirname, "../")
   });
   config.module.rules.push({
