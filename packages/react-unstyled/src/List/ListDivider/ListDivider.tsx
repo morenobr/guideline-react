@@ -1,6 +1,6 @@
 import React from "react";
 import { ListDividerProps } from "./ListDivider.types";
-import getClassName from "../../../helpers/getClassName";
+import getClassName from "../../helpers/getClassName";
 
 interface ListDividerPropsWithClassname extends ListDividerProps {
   className: string

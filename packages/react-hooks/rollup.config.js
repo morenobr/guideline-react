@@ -34,6 +34,7 @@ const plugins = (tsconfigOverride) => [
   }),
   commonjs(),
   sass({
+    // insert: true,
     runtime: sassRuntime,
     options: {
       includePaths: ['node_modules'],
@@ -109,7 +110,7 @@ export default [
     external: externalComponent,
     plugins: pluginsComponents,
   })),
-  ...componentNames.map((componentName) => ({
+  ...componentNames.filter(c => c!=='DrawerResponsive').map((componentName) => ({
     input: `src/styles/${componentName}.scss`,
     output: {
       file: `${dirCjs}/index.js`,//Replaced by next cjs build

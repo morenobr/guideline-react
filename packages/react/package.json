@@ -1,0 +1,27 @@
+{
+  "name": "@morenobr/guideline-react",
+  "version": "0.0.1",
+  "description": "Moreno Guideline components React with CSS class names defined, but without CSS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/morenobr/moreno-guideline-react.git"
+  },
+  "keywords": [
+    "library",
+    "guideline",
+    "moreno",
+    "react",
+    "rollup",
+    "lerna"
+  ],
+  "author": "Petherson Moreno",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/morenobr/moreno-guideline-react/issues"
+  },
+  "homepage": "https://github.com/morenobr/moreno-guideline-react#readme"
+}

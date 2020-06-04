@@ -1,7 +1,7 @@
 import React from "react";
 import { ListItemProps } from "./ListItem.types";
 import useFontMaterialIcons from "../../../hooks/useFontMaterialIcons";
-import getClassName from "../../../helpers/getClassName";
+import getClassName from "../../helpers/getClassName";
 
 interface ListItemPropsWithClassname extends ListItemProps {
   className: string

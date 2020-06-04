@@ -1,4 +1,4 @@
-import { SvgElement, ImageElement} from '../../types'
+import { SvgElement, ImageElement} from '../types'
 
 export interface IconButtonToogleProps {
   iconOn: string | SvgElement | ImageElement;
