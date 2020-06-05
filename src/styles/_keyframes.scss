@@ -1,0 +1,38 @@
+@import './vars';
+
+@mixin vars {
+  --ripple-fg-translate-start: #{$ripple-fg-translate-start};
+  --ripple-fg-translate-end: #{$ripple-fg-translate-end};
+  --ripple-fg-scale-start: #{$ripple-fg-scale-start};
+  --ripple-fg-scale: #{$ripple-fg-scale};
+  --ripple-fg-opacity: #{$ripple-fg-opacity};
+}
+@mixin keyframes {
+  @keyframes ripple-fg-radius-in {
+    from {
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translate(var(--ripple-fg-translate-start, $ripple-fg-translate-start)) scale(var(--ripple-fg-scale-start, $ripple-fg-scale-start));
+    }
+    to {
+      transform: translate(var(--ripple-fg-translate-end, $ripple-fg-translate-end)) scale(var(--ripple-fg-scale, $ripple-fg-scale));
+    }
+  }
+  @keyframes ripple-fg-opacity-in {
+    from {
+      animation-timing-function: linear;
+      opacity: 0;
+    }
+    to {
+      opacity: var(--ripple-fg-opacity, $ripple-fg-opacity);
+    }
+  }
+  @keyframes ripple-fg-opacity-out {
+    from {
+      animation-timing-function: linear;
+      opacity: var(--ripple-fg-opacity, $ripple-fg-opacity);
+    }
+    to {
+      opacity: 0;
+    }
+  }
+}

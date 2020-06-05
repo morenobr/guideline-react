@@ -1,0 +1,250 @@
+@use './keyframes' as keyframes;
+@import './vars';
+
+.mg-button {
+  @include keyframes.vars;
+  @include keyframes.keyframes;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: $font-family;
+  font-family: var(--font-family, $font-family);
+  font-size: $font-size;
+  font-size: var(--font-size, $font-size);
+  line-height: $line-height;
+  line-height: var(--line-height, $line-height);
+  font-weight: $font-weight;
+  font-weight: var(--font-weight, $font-weight);
+  letter-spacing: $letter-spacing;
+  letter-spacing: var(--letter-spacing, $letter-spacing);
+  text-decoration: $text-decoration;
+  text-decoration: var(--text-decoration, $text-decoration);
+  text-transform: $text-transform;
+  text-transform: var(--text-transform, $text-transform);
+  padding: 0 8px 0 8px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 64px;
+  border: none;
+  outline: none;
+  line-height: inherit;
+  user-select: none;
+  -webkit-appearance: none;
+  overflow: visible;
+  vertical-align: middle;
+  border-radius: 4px;
+
+  &, > .ripple{
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  > .ripple{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    box-sizing: content-box;
+    overflow: hidden;
+
+    &::before, &::after {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+      content: "";
+    }
+    &::before {
+      transition: opacity 15ms linear, background-color 15ms linear;
+      z-index: 1;
+    }
+    &::before, &::after {
+      top: calc(50% - 100%);
+      left: calc(50% - 100%);
+      width: 200%;
+      height: 200%;
+    }
+    &::before, &::after {
+      background-color: #000;
+    }
+    &::after {
+      transition: opacity 150ms linear;
+    }
+  }
+  &.fg-activation > .ripple::after {
+    animation: ripple-fg-radius-in 225ms forwards, ripple-fg-opacity-in 75ms forwards;
+  }
+  &.fg-deactivation > .ripple::after {
+    animation: ripple-fg-opacity-out 150ms;
+    transform: translate(var(--ripple-fg-translate-end, 0)) scale(var(--ripple-fg-scale, 1));
+  }
+  &:focus > .ripple::before {
+    transition-duration: 75ms;
+    opacity: 0.12;
+  }
+  &:active > .ripple::after {
+    transition-duration: 75ms;
+    opacity: 0.12;
+  }
+
+  // variants
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+  &:active {
+    outline: none;
+  }
+  &:hover {
+    cursor: pointer;
+    > .ripple::before {
+      opacity: 0.04;
+    }
+  }
+  &:disabled {
+    cursor: default;
+    pointer-events: none;
+  }
+  &:not(:disabled) {
+    background-color: transparent;
+  }
+  &:disabled {
+    background-color: transparent;
+  }
+  > svg.icon {
+    fill: currentColor;
+  }
+  > .icon {
+    margin-left: 0;
+    margin-right: 8px;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    vertical-align: top;
+  }
+  > .touch {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    height: 48px;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  &:not(:disabled) {
+    color: $primary;
+    color: var(--primary, $primary);
+  }
+  &:disabled {
+    color: rgba(0, 0, 0, 0.38);
+  }
+  > .label + .icon {
+    margin-left: 8px;
+    margin-right: 0;
+  }
+  > .icon[dir=rtl] {
+    margin-left: 8px;
+    margin-right: 0;
+  }
+  > .label + .icon[dir=rtl] {
+    margin-left: 0;
+    margin-right: 8px;
+  }
+
+  &.raised,
+  &.outlined {
+    > .icon{
+      margin-left: -4px;
+      margin-right: 8px;
+      &[dir=rtl]{
+        margin-left: 8px;
+        margin-right: -4px;
+      }
+    }
+    > .label + .icon{
+      margin-left: 8px;
+      margin-right: -4px;
+      &[dir=rtl]{
+        margin-left: -4px;
+        margin-right: 8px;
+      }
+    }
+  }
+  &.outlined {
+    padding: 0 15px 0 15px;
+    border-width: 1px;
+    border-style: solid;
+    > .ripple {
+      top: -1px;
+      left: -1px;
+      right: -1px;
+      bottom: -1px;
+    }
+    > .touch {
+      left: -1px;
+      width: calc(100% + 2 * 1px);
+    }
+    &:not(:disabled), &:disabled {
+      border-color: rgba(0, 0, 0, 0.12);
+    }
+  }
+
+
+
+  &.raised {
+    padding: 0 16px 0 16px;
+
+    &:not(:disabled) {
+      background-color: $primary;
+      background-color: var(--primary, $primary);
+      color: #fff;
+      color: var(--on-primary, #fff);
+    }
+    &:disabled {
+      background-color: rgba(0, 0, 0, 0.12);
+      color: rgba(0, 0, 0, 0.38);
+    }
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover, &:focus {
+      box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    }
+    &:active {
+      box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    }
+    &:disabled {
+      box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
+    }
+
+
+    > .ripple {
+      &::before, 
+      &::after {
+        background-color: #fff;
+        background-color: var(--on-primary, #fff);
+      }
+      &::after {
+        transition: opacity 150ms linear;
+      }
+    }
+  }
+  &.raised:hover > .ripple::before {
+    opacity: 0.08;
+  }
+  &.raised:focus > .ripple::before {
+    transition-duration: 75ms;
+    opacity: 0.24;
+  }
+  &.raised.active > .ripple::after {
+    transition-duration: 75ms;
+    opacity: 0.24;
+  }
+  &.touch {
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+}
