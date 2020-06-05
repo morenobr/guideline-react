@@ -1,10 +1,10 @@
 # moreno-guideline
 
-Button component based on Material Design: https://material.io/develop/web/components/buttons/
+- Button component based on Material Design: https://material.io/develop/web/components/buttons/
+- Floating Action Button component based on Material Design: https://material.io/develop/web/components/buttons/floating-action-buttons/
 
 ## TODO components based on Material Design
 
-- Floating Action Button: https://material.io/develop/web/components/buttons/floating-action-buttons/
 - Icon Button: https://material.io/develop/web/components/buttons/icon-buttons/
 - Lists: https://material.io/develop/web/components/lists/
 - App bar top: https://material.io/develop/web/components/top-app-bar/
