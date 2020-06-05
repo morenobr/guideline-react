@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import typescript from "rollup-plugin-typescript2";
 import commonjs from "rollup-plugin-commonjs";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
@@ -10,6 +12,12 @@ import packageJson from "./package.json";
 import tsconfig from "./tsconfig.json";
 
 const minify = true;
+
+const getComponentNames = ()=>{
+  const componentsDir = path.resolve(__dirname, 'src', 'components');
+  return fs.readdirSync(componentsDir)
+    .filter(p => fs.lstatSync(path.resolve(componentsDir, p)).isDirectory());
+}
 
 const plugins = (tsconfigOverride) => [
   peerDepsExternal(),
@@ -36,7 +44,7 @@ const plugins = (tsconfigOverride) => [
 ];
 const dirCjs = tsconfig.compilerOptions.declarationDir;
 const externals = ["react", "react-dom"];
-const componentNames = ["TestComponent", "Button"];
+const componentNames = getComponentNames();
 const externalComponent = (id) => {
   const regexExternals = new RegExp(
     "^(\\.\\.\\/)+(" + externals.join("|") + ")$"
