@@ -1,17 +1,14 @@
 import React from 'react';
 import IconButton, { IconButtonProps } from "../unstyled/IconButton";
-import "../styles/Button.scss";
-import useEffectResLinkLoader from '../hooks/useEffectResLinkLoader';
+import "../styles/IconButton.scss";
+import useFontRoboto from '../hooks/useFontRoboto';
 
 interface ButtonStyledProps extends IconButtonProps{
   className?: string;
 }
 
 export default (props:ButtonStyledProps) => {
-  useEffectResLinkLoader({
-    href: "https://fonts.googleapis.com/css2?family=Roboto&display=swap", 
-    rel: 'stylesheet', 
-  });
+  useFontRoboto();
   
   return (
     <IconButton {...props} className={`mdc-icon-button${props.className?` ${props.className}`:''}`} />
