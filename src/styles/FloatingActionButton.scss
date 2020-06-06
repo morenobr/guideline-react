@@ -1,7 +1,9 @@
+@use './fontcolors' as fontcolors;
 @use './keyframes' as keyframes;
 @import './vars';
 
 .mg-fab {
+  @include fontcolors.vars;
   @include keyframes.vars;
   @include keyframes.keyframes;
   position: relative;

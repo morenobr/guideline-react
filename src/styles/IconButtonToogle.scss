@@ -1,0 +1,25 @@
+@use './common-iconbutton' as iconbutton;
+
+.mg-icon-button-toogle {
+  @include iconbutton.corestyles;
+
+  //Children
+
+  > .icon {
+    display: inline-block;
+  }
+  > .icon.iconOn {
+    display: none;
+  }
+
+  //Variants
+
+  &.on{
+    > .icon {
+      display: none;
+    }
+    > .icon.iconOn {
+      display: inline-block;
+    }
+  }
+}

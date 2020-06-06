@@ -1,17 +1,14 @@
 import React from 'react';
 import Button, { ButtonProps } from "../unstyled/Button";
 import "../styles/Button.scss";
-import useEffectResLinkLoader from '../hooks/useEffectResLinkLoader';
+import useFontRoboto from '../hooks/useFontRoboto';
 
 interface ButtonStyledProps extends ButtonProps{
   className?: string;
 }
 
 export default (props:ButtonStyledProps) => {
-  useEffectResLinkLoader({
-    href: "https://fonts.googleapis.com/css2?family=Roboto&display=swap", 
-    rel: 'stylesheet', 
-  });
+  useFontRoboto();
   
   return (
     <Button {...props} className={`mg-button${props.className?` ${props.className}`:''}`} />

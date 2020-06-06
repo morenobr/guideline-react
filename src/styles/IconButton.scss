@@ -1,0 +1,5 @@
+@use './common-iconbutton' as iconbutton;
+
+.mg-icon-button {
+  @include iconbutton.corestyles;
+}

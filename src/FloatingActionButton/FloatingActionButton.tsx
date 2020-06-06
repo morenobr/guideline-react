@@ -1,17 +1,14 @@
 import React from 'react';
 import FloatingActionButton, { FabProps } from "../unstyled/FloatingActionButton";
 import "../styles/FloatingActionButton.scss";
-import useEffectResLinkLoader from '../hooks/useEffectResLinkLoader';
+import useFontRoboto from '../hooks/useFontRoboto';
 
 interface ButtonStyledProps extends FabProps{
   className?: string;
 }
 
 export default (props:ButtonStyledProps) => {
-  useEffectResLinkLoader({
-    href: "https://fonts.googleapis.com/css2?family=Roboto&display=swap", 
-    rel: 'stylesheet', 
-  });
+  useFontRoboto();
   
   return (
     <FloatingActionButton {...props} className={`mg-fab${props.className?` ${props.className}`:''}`} />

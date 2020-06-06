@@ -29,11 +29,14 @@
   },
   "files": [
     "index*",
+    "types.d*",
     "unstyled",
     "styles",
     "hooks",
     "Button",
-    "FloatingActionButton"
+    "FloatingActionButton",
+    "IconButton",
+    "IconButtonToogle"
   ],
   "repository": {
     "type": "git",
