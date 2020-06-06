@@ -2,10 +2,11 @@
 
 - Button component based on Material Design: https://material.io/develop/web/components/buttons/
 - Floating Action Button component based on Material Design: https://material.io/develop/web/components/buttons/floating-action-buttons/
+- Icon Button component based on Material Design: https://material.io/develop/web/components/buttons/icon-buttons/
+- Icon Button Toogle component based on Material Design: https://material.io/develop/web/components/buttons/icon-buttons/
 
 ## TODO components based on Material Design
 
-- Icon Button: https://material.io/develop/web/components/buttons/icon-buttons/
 - Lists: https://material.io/develop/web/components/lists/
 - App bar top: https://material.io/develop/web/components/top-app-bar/
 - Tab bar: https://material.io/develop/web/components/tabs/tab-bar/
