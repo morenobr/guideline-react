@@ -1,16 +1,16 @@
 import React from 'react';
 import IconButton, { IconButtonProps } from "../unstyled/IconButton";
-import "../styles/IconButton.scss";
 import useFontRoboto from '../hooks/useFontRoboto';
+import "../styles/IconButton.scss";
 
-interface ButtonStyledProps extends IconButtonProps{
+interface IconButtonStyledProps extends IconButtonProps{
   className?: string;
 }
 
-export default (props:ButtonStyledProps) => {
+export default (props:IconButtonStyledProps) => {
   useFontRoboto();
   
   return (
-    <IconButton {...props} className={`mdc-icon-button${props.className?` ${props.className}`:''}`} />
+    <IconButton {...props} className={`mg-icon-button${props.className?` ${props.className}`:''}`} />
   );
 }

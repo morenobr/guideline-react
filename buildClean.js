@@ -10,26 +10,21 @@ const componentNames = getComponentNames();
 
 const regexComponentsOnRoot = new RegExp('^('+componentNames.join('|')+')$');
 const fileDirList = fs.readdirSync('.');
+const regexListRemoveFile =[
+  /^index/,
+  /^types\.d/,
+];
+const regexListRemoveDir =[
+  /^unstyled$/,
+  regexComponentsOnRoot,
+  /^styles$/,
+  /^hooks$/,
+];
 fileDirList.forEach(fileOrDir => {
-  if(/^index/.test(fileOrDir)){
+  if(regexListRemoveFile.find(r => r.test(fileOrDir))){
     fs.unlinkSync(fileOrDir);
   }
-  if(/^unstyled$/.test(fileOrDir)){
-    fs.rmdirSync(fileOrDir, {
-      recursive: true,
-    })
-  }
-  if(regexComponentsOnRoot.test(fileOrDir)){
-    fs.rmdirSync(fileOrDir, {
-      recursive: true,
-    })
-  }
-  if(/^styles$/.test(fileOrDir)){
-    fs.rmdirSync(fileOrDir, {
-      recursive: true,
-    })
-  }
-  if(/^hooks$/.test(fileOrDir)){
+  if(regexListRemoveDir.find(r => r.test(fileOrDir))){
     fs.rmdirSync(fileOrDir, {
       recursive: true,
     })

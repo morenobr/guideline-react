@@ -10,17 +10,21 @@ const IconButtonToogle = ({
   className,
   iconOn,
   iconOff,
-  labelOn,
-  labelOff,
+  ariaLabelOn,
+  ariaLabelOff,
   value: valueProp = false,
   onChange,
+  primary,
+  secondary,
   ...otherProps
 }: IconButtonPropsWithClassname) => {
   const [value, setValue] = useState(valueProp);
   useFontMaterialIcons();
   const classes = {
     [className]: true,
-    [`${className}--on`]: value,
+    on: value,
+    primary: primary,
+    secondary: secondary,
   }
   const classNamesApplied = Object.keys(classes).filter(k => !!classes[k]).join(' ');
   const onClick = ()=>setValue(value =>{
@@ -34,17 +38,17 @@ const IconButtonToogle = ({
   return (
     <button
       className={classNamesApplied}
-      aria-label={labelOn}
-      data-aria-label-on={labelOff}
-      data-aria-label-off={labelOn}
+      aria-label={ariaLabelOn}
+      data-aria-label-on={ariaLabelOff}
+      data-aria-label-off={ariaLabelOn}
       onClick={onClick}
       {...otherProps}>
-      {typeof iconOn === "string" && <i className={`material-icons ${className}__icon ${className}__icon--on`}>{iconOn}</i>}
-      {typeof iconOn !== "string" && iconOn.type === 'svg' && <iconOn.type {...iconOn.props} className={`${className}__icon ${className}__icon--on ${iconOn.props.className}`}></iconOn.type>}
-      {typeof iconOn !== "string" && iconOn.type === 'img' && <iconOn.type {...iconOn.props} className={`${className}__icon ${className}__icon--on ${iconOn.props.className}`}></iconOn.type>}
-      {typeof iconOff === "string" && <i className={`material-icons ${className}__icon`}>{iconOff}</i>}
-      {typeof iconOff !== "string" && iconOff.type === 'svg' && <iconOff.type {...iconOff.props} className={`${className}__icon ${iconOff.props.className}`}></iconOff.type>}
-      {typeof iconOff !== "string" && iconOff.type === 'img' && <iconOff.type {...iconOff.props} className={`${className}__icon ${iconOff.props.className}`}></iconOff.type>}
+      {typeof iconOn === "string" && <i className={`material-icons icon iconOn`}>{iconOn}</i>}
+      {typeof iconOn !== "string" && iconOn.type === 'svg' && <iconOn.type {...iconOn.props} className={`icon iconOn ${iconOn.props.className}`}></iconOn.type>}
+      {typeof iconOn !== "string" && iconOn.type === 'img' && <iconOn.type {...iconOn.props} className={`icon iconOn ${iconOn.props.className}`}></iconOn.type>}
+      {typeof iconOff === "string" && <i className={`material-icons icon`}>{iconOff}</i>}
+      {typeof iconOff !== "string" && iconOff.type === 'svg' && <iconOff.type {...iconOff.props} className={`icon ${iconOff.props.className}`}></iconOff.type>}
+      {typeof iconOff !== "string" && iconOff.type === 'img' && <iconOff.type {...iconOff.props} className={`icon ${iconOff.props.className}`}></iconOff.type>}
     </button>
   );
 }

@@ -1,4 +1,9 @@
+import { SvgElement, ImageElement} from '../../types'
+
 export interface IconButtonProps {
-  icon: string;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>
+  icon: string | SvgElement | ImageElement;
+  ariaLabel?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  primary?: boolean;
+  secondary?: boolean;
 }

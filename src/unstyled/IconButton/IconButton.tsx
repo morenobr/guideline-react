@@ -9,17 +9,24 @@ interface IconButtonPropsWithClassname extends IconButtonProps {
 const IconButton = ({
   className,
   icon,
+  ariaLabel,
   onClick,
+  primary,
+  secondary,
   ...otherProps
 }: IconButtonPropsWithClassname) => {
   useFontMaterialIcons();
   const classes = {
+    'material-icons': typeof icon === "string",
     [className]: true,
+    primary: primary,
+    secondary: secondary,
   }
   const classNamesApplied = Object.keys(classes).filter(k => !!classes[k]).join(' ');
   return (
     <button
-      className={`material-icons ${classNamesApplied}`}
+      className={classNamesApplied}
+      aria-label={ariaLabel}
       onClick={onClick}
       {...otherProps}>
       {icon}

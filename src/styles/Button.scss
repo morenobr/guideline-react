@@ -1,7 +1,9 @@
+@use './fontcolors' as fontcolors;
 @use './keyframes' as keyframes;
 @import './vars';
 
 .mg-button {
+  @include fontcolors.vars;
   @include keyframes.vars;
   @include keyframes.keyframes;
   -moz-osx-font-smoothing: grayscale;

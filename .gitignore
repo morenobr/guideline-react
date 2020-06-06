@@ -5,5 +5,8 @@
 /styles
 /hooks
 /index*
+/types.d*
 /Button
 /FloatingActionButton
+/IconButton
+/IconButtonToogle
