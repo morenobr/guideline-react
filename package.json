@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "module": "index.es.js",
+  "types": "index.d.ts",
   "scripts": {
+    "prepack": "npm run build",
+    "postpack": "npm run build:clean",
     "build": "npm-run-all build:clean build:build",
     "build:build": "rollup -c",
     "build:clean": "node buildClean.js",
@@ -17,6 +20,7 @@
     "storybook:start": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
     "predeploy": "npm run storybook:build",
+    "postdeploy": "rm -rf storybook-static",
     "deploy": "gh-pages -d storybook-static"
   },
   "peerDependencies": {
@@ -25,10 +29,11 @@
   },
   "files": [
     "index*",
-    "components",
-    "componentsStyled",
+    "unstyled",
     "styles",
-    "hooks"
+    "hooks",
+    "Button",
+    "FloatingActionButton"
   ],
   "repository": {
     "type": "git",

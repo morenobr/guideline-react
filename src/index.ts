@@ -1,3 +1,7 @@
-import TestComponent from './componentsStyled/TestComponent'
+import Button from './Button'
+import FloatingActionButton from './FloatingActionButton'
 
-export { TestComponent }
+export {
+  Button,
+  FloatingActionButton,
+};

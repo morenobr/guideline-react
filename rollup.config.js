@@ -14,7 +14,7 @@ import tsconfig from "./tsconfig.json";
 const minify = true;
 
 const getComponentNames = ()=>{
-  const componentsDir = path.resolve(__dirname, 'src', 'components');
+  const componentsDir = path.resolve(__dirname, 'src', 'unstyled');
   return fs.readdirSync(componentsDir)
     .filter(p => fs.lstatSync(path.resolve(componentsDir, p)).isDirectory());
 }
@@ -50,10 +50,10 @@ const externalComponent = (id) => {
     "^(\\.\\.\\/)+(" + externals.join("|") + ")$"
   );
   const regexComponents = new RegExp(
-    "^(\\.\\.\\/)+components\\/(" + componentNames.join("|") + ")$"
+    "^(\\.\\.\\/)+unstyled\\/(" + componentNames.join("|") + ")$"
   );
   const regexComponentsStyled = new RegExp(
-    "^(\\.\\.\\/)+componentsStyled\\/(" + componentNames.join("|") + ")$"
+    "^(\\.\\.\\/)+(" + componentNames.join("|") + ")$"
   );
   if (
     regexExternals.test(id) ||
@@ -72,10 +72,10 @@ const pluginsComponents = plugins({
 });
 export default [
   ...componentNames.map((componentName) => ({
-    input: `src/components/${componentName}/index.ts`,
+    input: `src/unstyled/${componentName}/index.ts`,
     output: [
       {
-        file: `${dirCjs}/components/${componentName}/index.js`,
+        file: `${dirCjs}/unstyled/${componentName}/index.js`,
         format: "cjs",
         exports: "named",
         sourcemap: true,
@@ -84,11 +84,23 @@ export default [
     external: externalComponent,
     plugins: pluginsComponents,
   })),
-  ...componentNames.map((componentName) => ({
-    input: `src/componentsStyled/${componentName}.tsx`,
+  {
+    input: "src/unstyled/index.ts",
     output: [
       {
-        file: `${dirCjs}/componentsStyled/${componentName}.js`,
+        file: `${dirCjs}/unstyled/index.js`,
+        format: "cjs",
+        exports: "named",
+        sourcemap: true,
+      },
+    ],
+    external: () => true,
+  },
+  ...componentNames.map((componentName) => ({
+    input: `src/${componentName}/index.ts`,
+    output: [
+      {
+        file: `${dirCjs}/${componentName}/index.js`,
         format: "cjs",
         exports: "named",
         sourcemap: true,

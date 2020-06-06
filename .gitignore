@@ -1,8 +1,9 @@
 /node_modules
 /coverage
 /storybook-static
-/components
-/componentsStyled
+/unstyled
 /styles
 /hooks
 /index*
+/Button
+/FloatingActionButton

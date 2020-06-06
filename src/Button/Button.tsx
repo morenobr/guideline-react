@@ -1,9 +1,9 @@
 import React from 'react';
-import FloatingActionButton, { FabProps } from "../components/FloatingActionButton";
-import "../styles/FloatingActionButton.scss";
+import Button, { ButtonProps } from "../unstyled/Button";
+import "../styles/Button.scss";
 import useEffectResLinkLoader from '../hooks/useEffectResLinkLoader';
 
-interface ButtonStyledProps extends FabProps{
+interface ButtonStyledProps extends ButtonProps{
   className?: string;
 }
 
@@ -14,6 +14,6 @@ export default (props:ButtonStyledProps) => {
   });
   
   return (
-    <FloatingActionButton {...props} className={`mg-fab${props.className?` ${props.className}`:''}`} />
+    <Button {...props} className={`mg-button${props.className?` ${props.className}`:''}`} />
   );
 }
