@@ -7,7 +7,7 @@ export interface ListItemProps {
   activated?: boolean;
   selected?:boolean;
   withSelection?:boolean;
-  contentLeft?: JSX.Element;
-  contentRight?: JSX.Element;
+  contentLeft?: string | JSX.Element;
+  contentRight?: string | JSX.Element;
   labelFor?: string;
 }

@@ -1,5 +1,7 @@
 import React from "react";
 import { ListItemProps } from "./ListItem.types";
+import useFontMaterialIcons from "../../../hooks/useFontMaterialIcons";
+import getClassName from "../../../helpers/getClassName";
 
 interface ListItemPropsWithClassname extends ListItemProps {
   className: string
@@ -20,6 +22,7 @@ const ListItem = ({
   labelFor,
   ...otherProps
 }: ListItemPropsWithClassname) => {
+  useFontMaterialIcons();
   const classes = {
     [className]: true,
     selected: selected,
@@ -35,7 +38,9 @@ const ListItem = ({
       aria-selected={withSelection?selected:undefined}
       tabIndex={tabIndex}
       {...otherProps}>
-      {contentLeft && <span className="left">{contentLeft}</span>}
+      {contentLeft && typeof contentLeft === "string" && <i className="material-icons left" aria-hidden="true">{contentLeft}</i>}
+      {contentLeft && typeof contentLeft !== "string" && contentLeft.type === 'svg' && <contentLeft.type {...contentLeft.props} className={getClassName([contentLeft.props.className, 'left'])}></contentLeft.type>}
+      {contentLeft && typeof contentLeft !== "string" && contentLeft.type !== 'svg' && <span className="left">{contentLeft}</span>}
       <TextTag className="text" htmlFor={labelFor}>
         {text && !secondaryText && text}
         {text && secondaryText && (
@@ -45,7 +50,9 @@ const ListItem = ({
           </>
         )}
       </TextTag>
-      {contentRight && <span className="right">{contentRight}</span>}
+      {contentRight && typeof contentRight === "string" && <i className="material-icons right" aria-hidden="true">{contentRight}</i>}
+      {contentRight && typeof contentRight !== "string" && contentRight.type === 'svg' && <contentRight.type {...contentRight.props} className={getClassName([contentRight.props.className, 'right'])}></contentRight.type>}
+      {contentRight && typeof contentRight !== "string" && contentRight.type !== 'svg' && <span className="right">{contentRight}</span>}
     </li>
   );
 }
