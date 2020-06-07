@@ -5,10 +5,10 @@
 - Icon Button component based on Material Design: https://material.io/develop/web/components/buttons/icon-buttons/
 - Icon Button Toogle component based on Material Design: https://material.io/develop/web/components/buttons/icon-buttons/
 - List Components (and derived of it) based on Material Design: https://material.io/develop/web/components/lists/
+- Top App Bar component based on Material Design: https://material.io/develop/web/components/top-app-bar/
 
 ## TODO components based on Material Design
 
-- App bar top: https://material.io/develop/web/components/top-app-bar/
 - Tab bar: https://material.io/develop/web/components/tabs/tab-bar/
 - Checkboxes: https://material.io/develop/web/components/input-controls/checkboxes/
 - Radio buttons: https://material.io/develop/web/components/input-controls/radio-buttons/

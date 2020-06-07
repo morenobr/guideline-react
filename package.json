@@ -37,7 +37,8 @@
     "FloatingActionButton",
     "IconButton",
     "IconButtonToogle",
-    "List"
+    "List",
+    "TopAppBar"
   ],
   "repository": {
     "type": "git",
