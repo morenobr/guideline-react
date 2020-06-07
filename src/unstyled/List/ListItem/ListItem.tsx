@@ -20,6 +20,7 @@ const ListItem = ({
   contentLeft,
   contentRight,
   labelFor,
+  asLink,
   ...otherProps
 }: ListItemPropsWithClassname) => {
   useFontMaterialIcons();
@@ -30,9 +31,10 @@ const ListItem = ({
     activated: activated,
   }
   const classNamesApplied = Object.keys(classes).filter(k => !!classes[k]).join(' ');
+  const ListItemTag = asLink?'a':'li';
   const TextTag = (labelFor)?'label':'span';
   return (
-    <li
+    <ListItemTag
       className={classNamesApplied}
       role={role?role:(withSelection?'option':undefined)}
       aria-selected={withSelection?selected:undefined}
@@ -53,7 +55,7 @@ const ListItem = ({
       {contentRight && typeof contentRight === "string" && <i className="material-icons right" aria-hidden="true">{contentRight}</i>}
       {contentRight && typeof contentRight !== "string" && contentRight.type === 'svg' && <contentRight.type {...contentRight.props} className={getClassName([contentRight.props.className, 'right'])}></contentRight.type>}
       {contentRight && typeof contentRight !== "string" && contentRight.type !== 'svg' && <span className="right">{contentRight}</span>}
-    </li>
+    </ListItemTag>
   );
 }
 

@@ -10,4 +10,5 @@ export interface ListItemProps {
   contentLeft?: string | JSX.Element;
   contentRight?: string | JSX.Element;
   labelFor?: string;
+  asLink?: boolean;
 }
