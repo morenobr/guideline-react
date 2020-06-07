@@ -8,4 +8,5 @@ export interface ListProps {
   twoLine?:boolean;
   role?:string;
   withSelection?:boolean;
+  asNavigation?:boolean;
 }

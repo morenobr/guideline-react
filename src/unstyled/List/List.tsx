@@ -14,6 +14,7 @@ const List = ({
   dense,
   avatarList,
   twoLine,
+  asNavigation,
   ...otherProps
 }: ListPropsWithClassname) => {
   const classes = {
@@ -24,13 +25,14 @@ const List = ({
     'two-line': twoLine,
   }
   const classNamesApplied = Object.keys(classes).filter(k => !!classes[k]).join(' ');
+  const TagList = asNavigation?'nav':'ul';
   return (
-    <ul
+    <TagList
       className={classNamesApplied}
       role={role?role:(withSelection?'listbox':undefined)}
       {...otherProps}>
       {children}
-    </ul>
+    </TagList>
   );
 }
 
