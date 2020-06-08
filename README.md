@@ -6,6 +6,7 @@
 - Icon Button Toogle component based on Material Design: https://material.io/develop/web/components/buttons/icon-buttons/
 - List Components (and derived of it) based on Material Design: https://material.io/develop/web/components/lists/
 - Top App Bar component based on Material Design: https://material.io/develop/web/components/top-app-bar/
+- Drawer component based on Material Design: https://material.io/develop/web/components/drawers/
 
 ## TODO components based on Material Design
 
@@ -15,7 +16,6 @@
 - Switches: https://material.io/develop/web/components/input-controls/switches/
 - Linear progress: https://material.io/develop/web/components/linear-progress/
 - Circular progress: https://material.io/develop/web/components/circular-progress/
-- Drawer: https://material.io/develop/web/components/drawers/
 - Menus: https://material.io/develop/web/components/menus/
          https://material.io/develop/web/components/menu-surface/
 - Dialog: https://material.io/develop/web/components/dialogs/

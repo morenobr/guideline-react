@@ -14,15 +14,17 @@ const List = ({
   dense,
   avatarList,
   twoLine,
+  drawer,
   asNavigation,
   ...otherProps
 }: ListPropsWithClassname) => {
   const classes = {
     [className]: true,
     'non-interactive': nonInteractive,
-    dense: dense,
+    dense,
     'avatar-list': avatarList,
     'two-line': twoLine,
+    drawer,
   }
   const classNamesApplied = Object.keys(classes).filter(k => !!classes[k]).join(' ');
   const TagList = asNavigation?'nav':'ul';

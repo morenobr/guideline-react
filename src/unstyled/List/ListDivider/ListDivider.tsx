@@ -1,5 +1,6 @@
 import React from "react";
 import { ListDividerProps } from "./ListDivider.types";
+import getClassName from "../../../helpers/getClassName";
 
 interface ListDividerPropsWithClassname extends ListDividerProps {
   className: string
@@ -10,14 +11,16 @@ const ListDivider = ({
   asItem,
   padded,
   inset,
+  drawer,
   ...otherProps
 }: ListDividerPropsWithClassname) => {
   const classes = {
     [className]: true,
-    padded: padded,
-    inset: inset,
+    padded,
+    inset,
+    drawer,
   }
-  const classNamesApplied = Object.keys(classes).filter(k => !!classes[k]).join(' ');
+  const classNamesApplied = getClassName(classes);
   if(asItem){
     return (<li role="separator" className={classNamesApplied} {...otherProps}></li>);
   }

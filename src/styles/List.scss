@@ -11,9 +11,16 @@
   --subtitle1-letter-spacing: #{$subtitle1-letter-spacing};
   --subtitle1-text-decoration: #{$subtitle1-text-decoration};
   --subtitle1-text-transform: #{$subtitle1-text-transform};
+  --subtitle2-font-size: #{$subtitle2-font-size};
+  --subtitle2-line-height: #{$subtitle2-line-height};
+  --subtitle2-font-weight: #{$subtitle2-font-weight};
+  --subtitle2-letter-spacing: #{$subtitle2-letter-spacing};
+  --subtitle2-text-decoration: #{$subtitle2-text-decoration};
+  --subtitle2-text-transform: #{$subtitle2-text-transform};
   --primary: #{$primary};
   --primary-on-background: #{$primary-on-background};
   --secondary-on-background: #{$secondary-on-background};
+  --body2-font-size: #{$body2-font-size};
   --body2-line-height: #{$body2-line-height};
   --body2-font-weight: #{$body2-font-weight};
   --body2-letter-spacing: #{$body2-letter-spacing};
@@ -109,8 +116,8 @@
       -webkit-font-smoothing: antialiased;
       font-family: $font-family;
       font-family: var(--font-family, $font-family);
-      font-size: $font-size;
-      font-size: var(--font-size, $font-size);
+      font-size: $body2-font-size;
+      font-size: var(--body2-font-size, $body2-font-size);
       line-height: $body2-line-height;
       line-height: var(--body2-line-height, $body2-line-height);
       font-weight: $body2-font-weight;
@@ -518,4 +525,89 @@
 .mg-list-group[dir=rtl] > .inset {
   margin-left: 0;
   margin-right: 72px;
+}
+
+// custom variations to use with other components
+
+//custom variation drawer
+
+.mg-list.drawer{
+  > .mg-list-item {
+    color: rgba(0, 0, 0, 0.87);
+    border-radius: 4px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: $font-family;
+    font-family: var(--font-family, $font-family);
+    font-size: $subtitle2-font-size;
+    font-size: var(--subtitle2-font-size, $subtitle2-font-size);
+    line-height: $subtitle2-line-height;
+    line-height: var(--subtitle2-line-height, $subtitle2-line-height);
+    font-weight: $subtitle2-font-weight;
+    font-weight: var(--subtitle2-font-weight, $subtitle2-font-weight);
+    letter-spacing: $subtitle2-letter-spacing;
+    letter-spacing: var(--subtitle2-letter-spacing, $subtitle2-letter-spacing);
+    text-decoration: $subtitle2-text-decoration;
+    text-decoration: var(--subtitle2-text-decoration, $subtitle2-text-decoration);
+    text-transform: $subtitle2-text-transform;
+    text-transform: var(--subtitle2-text-transform, $subtitle2-text-transform);
+    height: calc(48px - 2 * 4px);
+    margin: 8px 8px;
+    padding: 0 8px;
+    &:nth-child(1) {
+      margin-top: 2px;
+    }
+    &:nth-last-child(1) {
+      margin-bottom: 0;
+    }
+    > .left {
+      color: rgba(0, 0, 0, 0.6);
+    }
+    &.activated {
+      color: rgba(98, 0, 238, 0.87);
+      > .left {
+        color: #6200ee;
+      }
+    }
+  }
+}
+
+.mg-list-divider.drawer {
+  margin: 3px 0 4px;
+}
+
+.mg-list-group.drawer{
+  > .subheader {
+    color: rgba(0, 0, 0, 0.6);
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: $font-family;
+    font-family: var(--font-family, $font-family);
+    font-size: $body2-font-size;
+    font-size: var(--body2-font-size, $body2-font-size);
+    line-height: $body2-line-height;
+    line-height: var(--body2-line-height, $body2-line-height);
+    font-weight: $body2-font-weight;
+    font-weight: var(--body2-font-weight, $body2-font-weight);
+    letter-spacing: $body2-letter-spacing;
+    letter-spacing: var(--body2-letter-spacing, $body2-letter-spacing);
+    text-decoration: $body2-text-decoration;
+    text-decoration: var(--body2-text-decoration, $body2-text-decoration);
+    text-transform: $body2-text-transform;
+    text-transform: var(--body2-text-transform, $body2-text-transform);
+    display: block;
+    margin-top: 0;
+    /* @alternate */
+    line-height: normal;
+    margin: 0;
+    padding: 0 16px;
+
+    &::before {
+      display: inline-block;
+      width: 0;
+      height: 24px;
+      content: "";
+      vertical-align: 0;
+    }
+  }
 }

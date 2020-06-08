@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import React, { CSSProperties } from "react";
 
 export interface ButtonProps {
   label?: string;
@@ -6,5 +6,6 @@ export interface ButtonProps {
   outlined?:boolean;
   raised?:boolean;
   touch?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   style?: CSSProperties;
 }

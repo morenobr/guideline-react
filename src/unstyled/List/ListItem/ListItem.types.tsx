@@ -11,4 +11,6 @@ export interface ListItemProps {
   contentRight?: string | JSX.Element;
   labelFor?: string;
   asLink?: boolean;
+  href?: string;
+  onClick?: React.MouseEventHandler<HTMLLIElement|HTMLAnchorElement>;
 }

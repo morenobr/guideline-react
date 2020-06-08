@@ -13,6 +13,7 @@ const Button = ({
   touch,
   outlined,
   raised,
+  onClick,
   style,
   ...otherProps
 }: ButtonPropsWithClassname) => {
@@ -108,6 +109,7 @@ const Button = ({
       onMouseOut={onMouseOut}
       onFocus={onFocus}
       onBlur={onBlur}
+      onClick={onClick}
       style={{...activation.styles, ...style} as CSSProperties}
       {...otherProps}>
         {icon && typeof icon === "string" && <i className="material-icons icon" aria-hidden="true">{icon}</i>}

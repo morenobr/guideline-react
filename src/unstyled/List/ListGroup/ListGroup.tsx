@@ -1,5 +1,6 @@
 import React from "react";
 import { ListGroupProps } from "./ListGroup.types";
+import getClassName from "../../../helpers/getClassName";
 
 interface ListItemPropsWithClassname extends ListGroupProps {
   className: string
@@ -7,11 +8,16 @@ interface ListItemPropsWithClassname extends ListGroupProps {
 
 const ListGroup = ({
   className,
+  drawer,
   children,
   ...otherProps
 }: ListItemPropsWithClassname) => {
+  const classes = {
+    [className]: true,
+    drawer,
+  }
   return (
-    <div className={className} {...otherProps}>{children}</div>
+    <div className={getClassName(classes)} {...otherProps}>{children}</div>
   );
 }
 

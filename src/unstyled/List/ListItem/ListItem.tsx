@@ -21,17 +21,19 @@ const ListItem = ({
   contentRight,
   labelFor,
   asLink,
+  href,
+  onClick,
   ...otherProps
 }: ListItemPropsWithClassname) => {
   useFontMaterialIcons();
   const classes = {
     [className]: true,
-    selected: selected,
-    disabled: disabled,
-    activated: activated,
+    selected,
+    disabled,
+    activated,
   }
   const classNamesApplied = Object.keys(classes).filter(k => !!classes[k]).join(' ');
-  const ListItemTag = asLink?'a':'li';
+  const ListItemTag = (asLink || href)?'a':'li';
   const TextTag = (labelFor)?'label':'span';
   return (
     <ListItemTag
@@ -39,6 +41,8 @@ const ListItem = ({
       role={role?role:(withSelection?'option':undefined)}
       aria-selected={withSelection?selected:undefined}
       tabIndex={tabIndex}
+      href={href}
+      onClick={onClick}
       {...otherProps}>
       {contentLeft && typeof contentLeft === "string" && <i className="material-icons left" aria-hidden="true">{contentLeft}</i>}
       {contentLeft && typeof contentLeft !== "string" && contentLeft.type === 'svg' && <contentLeft.type {...contentLeft.props} className={getClassName([contentLeft.props.className, 'left'])}></contentLeft.type>}

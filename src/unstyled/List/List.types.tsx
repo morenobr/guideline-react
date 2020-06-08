@@ -6,6 +6,7 @@ export interface ListProps {
   dense?:boolean;
   avatarList?:boolean;
   twoLine?:boolean;
+  drawer?:boolean;
   role?:string;
   withSelection?:boolean;
   asNavigation?:boolean;

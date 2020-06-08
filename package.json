@@ -32,13 +32,15 @@
     "types.d*",
     "unstyled",
     "styles",
+    "helpers",
     "hooks",
     "Button",
     "FloatingActionButton",
     "IconButton",
     "IconButtonToogle",
     "List",
-    "TopAppBar"
+    "TopAppBar",
+    "Drawer"
   ],
   "repository": {
     "type": "git",
