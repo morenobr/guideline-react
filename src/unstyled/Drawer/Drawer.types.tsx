@@ -1,4 +1,5 @@
 export interface DrawerProps {
+  className?: string
   children: JSX.Element | Array<JSX.Element>;
   title?: string;
   subtitle?: string;

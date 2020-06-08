@@ -3,10 +3,11 @@ import { DrawerProps } from "./Drawer.types";
 import getClassName from "../../helpers/getClassName";
 
 interface DrawerPropsWithClassname extends DrawerProps {
-  className: string
+  classNameDrawer: string
 }
 
 const Drawer = ({
+  classNameDrawer,
   className,
   children,
   title,
@@ -20,7 +21,7 @@ const Drawer = ({
   ...otherProps
 }: DrawerPropsWithClassname) => {
   const classes = {
-    [className]: true,
+    [classNameDrawer]: true,
     dismissible,
     modal,
     'modal-shadow': modal && open,
@@ -29,7 +30,7 @@ const Drawer = ({
     opening: animate && open,
     closing: animate && !open,
   }
-  const classNamesApplied = Object.keys(classes).filter(k => !!classes[k]).join(' ');
+  const classNamesApplied = getClassName([getClassName(classes), className]);
 
   return (
     <>
@@ -44,8 +45,8 @@ const Drawer = ({
           {children}
         </div>
       </aside>
-      {modal && open && (<div className={`${className}-scrim`} onClick={()=>{ if(onClose) { onClose(); } } }></div>)}
-      {appContent && (<appContent.type {...appContent.props} className={getClassName([appContent.props.className, `${className}-app-content`])}></appContent.type>)}
+      {modal && open && (<div className={`${classNameDrawer}-scrim`} onClick={()=>{ if(onClose) { onClose(); } } }></div>)}
+      {appContent && (<appContent.type {...appContent.props} className={getClassName([appContent.props.className, `${classNameDrawer}-app-content`])}></appContent.type>)}
     </>
   );
 }
