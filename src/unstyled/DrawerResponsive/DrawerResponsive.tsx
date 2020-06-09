@@ -14,6 +14,7 @@ const DrawerResponsive = ({
   children,
   title,
   subtitle,
+  fixed,
   animate,
   open,
   onClose,
@@ -39,7 +40,8 @@ const DrawerResponsive = ({
       appContent={<appContent.type {...appContent.props} drawerAlwaysVisible={drawerAlwaysVisible}></appContent.type>}
       animate={animate}
       {...otherProps}
-      dismissible={drawerAlwaysVisible}
+      dismissible={!fixed && drawerAlwaysVisible}
+      fixed={fixed && drawerAlwaysVisible}
       modal={!drawerAlwaysVisible}
       open={drawerAlwaysVisible || open}
       />
