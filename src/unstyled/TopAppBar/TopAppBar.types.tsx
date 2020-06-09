@@ -11,6 +11,7 @@ export interface TopAppBarProps {
   shortCollapsed?: boolean;
   fixed?: boolean;
   fixedScrolled?: boolean;
+  fixedTop?: boolean;
   dense?: boolean;
   secondary?: boolean;
 }

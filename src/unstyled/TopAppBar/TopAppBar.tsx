@@ -15,6 +15,7 @@ const TopAppBar = ({
   shortCollapsed,
   fixed,
   fixedScrolled,
+  fixedTop,
   dense,
   secondary,
   ...otherProps
@@ -29,6 +30,7 @@ const TopAppBar = ({
     'has-three-action-items': short && iconButtonList && iconButtonList.length === 3,
     fixed,
     'fixed-scrolled': fixedScrolled,
+    'fixed-top': fixedTop,
     dense,
     secondary,
   }
@@ -36,16 +38,18 @@ const TopAppBar = ({
 
   return (
     <header className={classNamesApplied} {...otherProps}>
-      <div className="row">
-        <section className="section align-start">
+      <div className="rowPos">
+        <div className="row">
+          <section className="section align-start">
             {navigationIconButton && <navigationIconButton.type {...navigationIconButton.props} className={`${navigationIconButton.props.className} navigation-icon`}></navigationIconButton.type>}
-          <span className="title">{title}</span>
-        </section>
-        <section className="section align-end" role="toolbar">
-          {iconButtonList && iconButtonList.map((iconButton, index) => (
-            <iconButton.type {...iconButton.props} key={index} className={`${iconButton.props.className} action-item`}></iconButton.type>
-          ))}
-        </section>
+            <span className="title">{title}</span>
+          </section>
+          <section className="section align-end" role="toolbar">
+            {iconButtonList && iconButtonList.map((iconButton, index) => (
+              <iconButton.type {...iconButton.props} key={index} className={`${iconButton.props.className} action-item`}></iconButton.type>
+            ))}
+          </section>
+        </div>
       </div>
     </header>
   );
