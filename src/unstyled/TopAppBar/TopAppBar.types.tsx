@@ -5,7 +5,7 @@ interface IconButtonPropsWithClassName extends IconButtonProps{
 interface IconButton extends React.ReactElement<IconButtonPropsWithClassName> {};
 export interface TopAppBarProps {
   title: string;
-  navigationIconButton: IconButton;
+  navigationIconButton?: IconButton;
   iconButtonList?: Array<IconButton>;
   short?: boolean;
   shortCollapsed?: boolean;

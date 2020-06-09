@@ -38,7 +38,7 @@ const TopAppBar = ({
     <header className={classNamesApplied} {...otherProps}>
       <div className="row">
         <section className="section align-start">
-          <navigationIconButton.type {...navigationIconButton.props} className={`${navigationIconButton.props.className} navigation-icon`}></navigationIconButton.type>
+            {navigationIconButton && <navigationIconButton.type {...navigationIconButton.props} className={`${navigationIconButton.props.className} navigation-icon`}></navigationIconButton.type>}
           <span className="title">{title}</span>
         </section>
         <section className="section align-end" role="toolbar">
