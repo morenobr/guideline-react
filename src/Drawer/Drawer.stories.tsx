@@ -54,6 +54,9 @@ export const ModalDrawer = () => {
         <p>
           <Button raised label="Abrir gaveta" onClick={()=>setOpen(true)} />
         </p>
+        {[...new Array(45)].map((i, index)=>(
+          <p key={index}>line {index}</p>
+        ))}
       </div>
     </>
   );
@@ -73,11 +76,47 @@ export const DismissibleAlwaysOpen = () => {
       <p>
         content
       </p>
+      {[...new Array(45)].map((i, index)=>(
+        <p key={index}>line {index}</p>
+      ))}
     </div>
   );
   return (
     <>
       <Drawer animate dismissible open appContent={content}>
+        <List asNavigation>
+          <ListItem href="#" text="Home" contentLeft="house" activated={menuSelected === 'home'} onClick={changePage('home')} />
+          <ListItem href="#" text="Inbox" contentLeft="inbox" activated={menuSelected === 'inbox'} onClick={changePage('inbox')} />
+          <ListItem href="#" text="Outgoing" contentLeft="send" activated={menuSelected === 'outgoing'} onClick={changePage('outgoing')} />
+          <ListItem href="#" text="Drafts" contentLeft="favorite" activated={menuSelected === 'drafts'} onClick={changePage('drafts')} />
+        </List>
+      </Drawer>
+    </>
+  );
+}
+
+export const FixedAlwaysOpen = () => {
+  useFullBody();
+  const [menuSelected, setMenuSelected] = useState('home');
+  const changePage = useCallback((page: string) => {
+    return onClickPrevent(()=>{
+      setMenuSelected(page);
+    })
+  }, []);
+  const content = (
+    <div>
+      <h3>header content with Fixed Drawer</h3>
+      <p>
+        content
+      </p>
+      {[...new Array(45)].map((i, index)=>(
+        <p key={index}>line {index}</p>
+      ))}
+    </div>
+  );
+  return (
+    <>
+      <Drawer fixed animate dismissible open appContent={content}>
         <List asNavigation>
           <ListItem href="#" text="Home" contentLeft="house" activated={menuSelected === 'home'} onClick={changePage('home')} />
           <ListItem href="#" text="Inbox" contentLeft="inbox" activated={menuSelected === 'inbox'} onClick={changePage('inbox')} />
@@ -102,6 +141,9 @@ export const DismissibleAlwaysOpenListDrawer = () => {
       <p>
         content
       </p>
+      {[...new Array(45)].map((i, index)=>(
+        <p key={index}>line {index}</p>
+      ))}
     </div>
   );
   return (
@@ -136,6 +178,9 @@ export const DismissibleWithToogle = () => {
       <p>
         <Button raised label="Toogle gaveta" onClick={()=>setOpen(o => !o)} />
       </p>
+      {[...new Array(45)].map((i, index)=>(
+        <p key={index}>line {index}</p>
+      ))}
     </div>
   );
   return (
@@ -181,6 +226,9 @@ export const ModalDrawerWithHeader = () => {
         <p>
           <Button raised label="Abrir gaveta" onClick={()=>setOpen(true)} />
         </p>
+        {[...new Array(45)].map((i, index)=>(
+          <p key={index}>line {index}</p>
+        ))}
       </div>
     </>
   );
@@ -200,6 +248,9 @@ export const DismissibleAlwaysOpenWithHeader = () => {
       <p>
         content
       </p>
+      {[...new Array(45)].map((i, index)=>(
+        <p key={index}>line {index}</p>
+      ))}
     </div>
   );
   return (
@@ -234,6 +285,9 @@ export const DismissibleWithToogleWithHeader = () => {
       <p>
         <Button raised label="Toogle gaveta" onClick={()=>setOpen(o => !o)} />
       </p>
+      {[...new Array(45)].map((i, index)=>(
+        <p key={index}>line {index}</p>
+      ))}
     </div>
   );
   return (

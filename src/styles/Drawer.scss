@@ -126,15 +126,20 @@
     transform: translateX(-100%);
     transition-duration: 200ms;
   }
-  &.dismissible {
-      left: 0;
-      right: initial;
+  &.dismissible, &.fixed {
+    left: 0;
+    right: initial;
     display: none;
+  }
+  &.dismissible{
     position: absolute;
   }
+  &.fixed{
+    position: fixed;
+  }
   &.modal {
-      left: 0;
-      right: initial;
+    left: 0;
+    right: initial;
     display: none;
     position: fixed;
     &.modal-shadow{
@@ -143,8 +148,10 @@
   }
 
   // multiple variants
-  &.dismissible.open {
-    display: flex;
+  &.dismissible, &.fixed{
+    &.open {
+      display: flex;
+    }
   }
   &.modal.open {
     display: flex;
@@ -174,7 +181,9 @@
   transform: translateX(100%);
 }
 [dir=rtl] > .mg-drawer.dismissible,
-.mg-drawer.dismissible[dir=rtl] {
+.mg-drawer.dismissible[dir=rtl],
+[dir=rtl] > .mg-drawer.fixed,
+.mg-drawer.fixed[dir=rtl] {
   left: initial;
   right: 0;
 }

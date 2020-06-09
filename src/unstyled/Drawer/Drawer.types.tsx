@@ -4,6 +4,7 @@ export interface DrawerProps {
   title?: string;
   subtitle?: string;
   dismissible?: boolean;
+  fixed?: boolean;
   animate?: boolean;
   modal?: boolean;
   open?: boolean;

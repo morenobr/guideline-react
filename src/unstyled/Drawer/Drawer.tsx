@@ -13,6 +13,7 @@ const Drawer = ({
   title,
   subtitle,
   dismissible,
+  fixed,
   animate,
   modal,
   open,
@@ -23,6 +24,7 @@ const Drawer = ({
   const classes = {
     [classNameDrawer]: true,
     dismissible,
+    fixed,
     modal,
     'modal-shadow': modal && open,
     animate,
