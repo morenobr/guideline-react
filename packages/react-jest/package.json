@@ -1,0 +1,28 @@
+{
+  "name": "@morenobr/guideline-react-jest",
+  "version": "0.0.1",
+  "description": "Packages and configs used to help configure Jest to React on projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/morenobr/moreno-guideline-react.git"
+  },
+  "keywords": [
+    "jest",
+    "group-packages",
+    "react"
+  ],
+  "author": "Petherson Moreno",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/morenobr/moreno-guideline-react/issues"
+  },
+  "homepage": "https://github.com/morenobr/moreno-guideline-react#readme",
+  "dependencies": {
+    "babel-jest": "^26.0.1",
+    "babel-preset-react-app": "^9.1.2"
+  }
+}

@@ -1,12 +1,10 @@
-const path = require('path');
-
 module.exports = {
   roots: ["./src"],
   setupFilesAfterEnv: ["./jest.setup.ts"],
   moduleFileExtensions: ["ts", "tsx", "js"],
   testPathIgnorePatterns: ["node_modules/","build/"],
   transform: {
-    "^.+\\.tsx?$": path.resolve(__dirname, 'jest.babelTransform.js')
+    "^.+\\.tsx?$": '@morenobr/guideline-react-jest/babelTransform.js'
   },
   testMatch: ["**/*.test.(ts|tsx)"],
   moduleNameMapper: {
