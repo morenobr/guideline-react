@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useCallback, useState, CSSProperties } from "react";
 import { ButtonProps } from "./Button.types";
-import useFontMaterialIcons from "../../hooks/useFontMaterialIcons";
+// import useFontMaterialIcons from "../../hooks/useFontMaterialIcons";
+//TODO: change font material-icons control to be defined external
 
 interface ButtonPropsWithClassname extends ButtonProps {
   className: string
@@ -24,7 +25,7 @@ const Button = ({
       '--ripple-fg-translate-end': 0 as number | string,
     }
   });
-  useFontMaterialIcons();
+  // useFontMaterialIcons();
   const ref = useRef(null as HTMLButtonElement|null);
   const classes = {
     [className]: true,

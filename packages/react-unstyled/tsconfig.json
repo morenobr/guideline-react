@@ -20,5 +20,5 @@
     "jsx": "react"
   },
   "include": ["src"],
-  "exclude": ["node_modules", "index*", "components", "componentsStyled"]
+  "exclude": ["node_modules"]
 }

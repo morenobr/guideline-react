@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IconButtonToogleProps } from "./IconButtonToogle.types";
-import useFontMaterialIcons from "../../hooks/useFontMaterialIcons";
+// import useFontMaterialIcons from "../../hooks/useFontMaterialIcons";
+//TODO: change font material-icons control to be defined external
 
 interface IconButtonPropsWithClassname extends IconButtonToogleProps {
   className: string
@@ -19,7 +20,7 @@ const IconButtonToogle = ({
   ...otherProps
 }: IconButtonPropsWithClassname) => {
   const [value, setValue] = useState(valueProp);
-  useFontMaterialIcons();
+  // useFontMaterialIcons();
   const classes = {
     [className]: true,
     on: value,

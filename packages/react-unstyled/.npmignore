@@ -1,0 +1,8 @@
+/node_modules
+/.babelrc
+/.eslintrc.yml
+/buildClean.js
+/rollup.config.js
+/tsconfig.json
+/jest.*
+/src

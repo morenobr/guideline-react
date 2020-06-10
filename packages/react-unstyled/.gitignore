@@ -1,10 +1,5 @@
 /node_modules
-/coverage
-/storybook-static
-/unstyled
-/styles
 /helpers
-/hooks
 /index*
 /types.d*
 /Button
@@ -14,3 +9,4 @@
 /List
 /TopAppBar
 /Drawer
+/DrawerResponsive

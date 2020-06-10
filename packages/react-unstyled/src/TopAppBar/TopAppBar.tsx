@@ -1,6 +1,7 @@
 import React from "react";
 import { TopAppBarProps } from "./TopAppBar.types";
-import useFontMaterialIcons from "../../hooks/useFontMaterialIcons";
+// import useFontMaterialIcons from "../../hooks/useFontMaterialIcons";
+//TODO: change font material-icons control to be defined external
 
 interface TopAppBarPropsWithClassname extends TopAppBarProps {
   className: string
@@ -20,7 +21,7 @@ const TopAppBar = ({
   secondary,
   ...otherProps
 }: TopAppBarPropsWithClassname) => {
-  useFontMaterialIcons();
+  // useFontMaterialIcons();
   const classes = {
     [className]: true,
     short,

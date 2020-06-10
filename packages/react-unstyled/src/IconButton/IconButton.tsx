@@ -1,6 +1,7 @@
 import React from "react";
 import { IconButtonProps } from "./IconButton.types";
-import useFontMaterialIcons from "../../hooks/useFontMaterialIcons";
+// import useFontMaterialIcons from "../../hooks/useFontMaterialIcons";
+//TODO: change font material-icons control to be defined external
 
 interface IconButtonPropsWithClassname extends IconButtonProps {
   className: string
@@ -15,7 +16,7 @@ const IconButton = ({
   secondary,
   ...otherProps
 }: IconButtonPropsWithClassname) => {
-  useFontMaterialIcons();
+  // useFontMaterialIcons();
   const classes = {
     'material-icons': typeof icon === "string",
     [className]: true,

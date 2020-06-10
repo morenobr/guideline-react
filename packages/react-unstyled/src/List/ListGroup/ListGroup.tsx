@@ -1,6 +1,6 @@
 import React from "react";
 import { ListGroupProps } from "./ListGroup.types";
-import getClassName from "../../helpers/getClassName";
+import { getClassName } from "../../helpers";
 
 interface ListItemPropsWithClassname extends ListGroupProps {
   className: string

@@ -2,9 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 const getComponentNames = ()=>{
-  const componentsDir = path.resolve(__dirname, 'src', 'unstyled');
+  const componentsDir = path.resolve(__dirname, 'src');
   return fs.readdirSync(componentsDir)
-    .filter(p => fs.lstatSync(path.resolve(componentsDir, p)).isDirectory());
+    .filter(p => fs.lstatSync(path.resolve(componentsDir, p)).isDirectory())
+    .filter(p => p !== 'helpers');
 }
 const componentNames = getComponentNames();
 
@@ -15,10 +16,8 @@ const regexListRemoveFile =[
   /^types\.d/,
 ];
 const regexListRemoveDir =[
-  /^unstyled$/,
+  /^helpers$/,
   regexComponentsOnRoot,
-  /^styles$/,
-  /^hooks$/,
 ];
 fileDirList.forEach(fileOrDir => {
   if(regexListRemoveFile.find(r => r.test(fileOrDir))){

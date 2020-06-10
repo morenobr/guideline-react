@@ -1,7 +1,8 @@
 import React from "react";
 import { ListItemProps } from "./ListItem.types";
-import useFontMaterialIcons from "../../../hooks/useFontMaterialIcons";
-import getClassName from "../../helpers/getClassName";
+// import useFontMaterialIcons from "../../../hooks/useFontMaterialIcons";
+import { getClassName } from "../../helpers";
+//TODO: change font material-icons control to be defined external
 
 interface ListItemPropsWithClassname extends ListItemProps {
   className: string
@@ -25,7 +26,7 @@ const ListItem = ({
   onClick,
   ...otherProps
 }: ListItemPropsWithClassname) => {
-  useFontMaterialIcons();
+  // useFontMaterialIcons();
   const classes = {
     [className]: true,
     selected,

@@ -1,6 +1,6 @@
 import React from "react";
 import { DrawerProps } from "./Drawer.types";
-import getClassName from "../helpers/getClassName";
+import { getClassName } from "../helpers";
 
 interface DrawerPropsWithClassname extends DrawerProps {
   classNameDrawer: string
