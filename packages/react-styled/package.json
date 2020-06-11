@@ -18,7 +18,10 @@
     "test:watch-coverage": "jest -w --coverage",
     "storybook": "npm run storybook:start",
     "storybook:start": "start-storybook -p 6006",
-    "storybook:build": "build-storybook"
+    "storybook:build": "build-storybook",
+    "predeploy": "npm run storybook:build",
+    "postdeploy": "rm -rf storybook-static",
+    "deploy": "gh-pages -d storybook-static"
   },
   "repository": {
     "type": "git",
@@ -58,6 +61,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "eslint": "^7.2.0",
+    "gh-pages": "^3.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
     "npm-run-all": "^4.1.5",
