@@ -128,6 +128,7 @@ export default [
         sourcemap: true,
       },
     ],
+    external: id => isLibExternal(id),
     plugins: [
       peerDepsExternal(),
       resolve(),
