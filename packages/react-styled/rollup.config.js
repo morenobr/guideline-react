@@ -9,6 +9,17 @@ import tsconfig from "./tsconfig.json";
 
 const minify = process.env.MINIFY === undefined || process.env.MINIFY === true;
 
+const externals = ["react", "react-dom","@morenobr/guideline-react-hooks","@morenobr/guideline-react"];
+const isLibExternal = (id)=> {
+  const regexExternalsEquals = new RegExp(
+    "^(" + externals.map(e => e.replace('/', '\\/')).join("|") + ")$"
+  );
+  const regexExternalsBegins = new RegExp(
+    "^(" + externals.map(e => e.replace('/', '\\/')).join("|") + ")"
+  );
+  return regexExternalsEquals.test(id) || regexExternalsBegins.test(id);
+}
+
 const tsconfigExcludeBuild = [
   ...tsconfig.exclude,
   "src/**/*.test.tsx",
@@ -34,8 +45,28 @@ const pluginTypescriptDeclarationEmit = typescript({
 });
 const pluginsMinify = (minify?[terser()]:[]);
 export default [
+  // {
+  //   input: "src/index.ts",
+  //   output: [
+      // {
+      //   file: packageJson.main,
+      //   format: "cjs",
+      //   exports: "named",
+      //   sourcemap: true,
+      // },
+  //   ],
+  //   external: (id) => isLibExternal(id),
+  //   plugins: [
+  //     postcss(),
+  //     peerDepsExternal(),
+  //     resolve(),
+  //     pluginTypescriptDeclarationNoEmit,
+  //     commonjs(),
+  //     ...pluginsMinify,
+  //   ],
+  // },
   {
-    input: "src/index.ts",
+    input: ["src/index.ts"],
     output: [
       {
         file: packageJson.main,
@@ -43,19 +74,6 @@ export default [
         exports: "named",
         sourcemap: true,
       },
-    ],
-    plugins: [
-      postcss(),
-      peerDepsExternal(),
-      resolve(),
-      pluginTypescriptDeclarationNoEmit,
-      commonjs(),
-      ...pluginsMinify,
-    ],
-  },
-  {
-    input: ["src/index.ts"],
-    output: [
       {
         file: packageJson.module,
         format: "esm",
@@ -63,6 +81,7 @@ export default [
         sourcemap: true,
       },
     ],
+    external: (id) => isLibExternal(id),
     plugins: [
       postcss(),
       peerDepsExternal(),
