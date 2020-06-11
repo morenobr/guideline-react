@@ -1,6 +1,6 @@
 import React from "react";
 import { ListItemProps } from "./ListItem.types";
-// import useFontMaterialIcons from "../../../hooks/useFontMaterialIcons";
+import { useFontMaterialIcons } from "@morenobr/guideline-react-hooks";
 import { getClassName } from "../../helpers";
 //TODO: change font material-icons control to be defined external
 
@@ -26,7 +26,7 @@ const ListItem = ({
   onClick,
   ...otherProps
 }: ListItemPropsWithClassname) => {
-  // useFontMaterialIcons();
+  useFontMaterialIcons();
   const classes = {
     [className]: true,
     selected,

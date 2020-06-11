@@ -1,6 +1,6 @@
 import React from "react";
 import { FabProps } from "./FloatingActionButton.types";
-// import useFontMaterialIcons from "../../hooks/useFontMaterialIcons";
+import { useFontMaterialIcons } from "@morenobr/guideline-react-hooks";
 //TODO: change font material-icons control to be defined external
 
 interface ButtonPropsWithClassname extends FabProps {
@@ -19,7 +19,7 @@ const FloatingActionButton = ({
   onClick,
   ...otherProps
 }: ButtonPropsWithClassname) => {
-  // useFontMaterialIcons();
+  useFontMaterialIcons();
   const classes = {
     [className]: true,
     mini: mini,

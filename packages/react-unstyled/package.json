@@ -26,6 +26,7 @@
   "keywords": [
     "library",
     "guideline",
+    "moreno",
     "unstyled",
     "react",
     "rollup",
@@ -65,5 +66,8 @@
     "rollup-plugin-terser": "^6.1.0",
     "rollup-plugin-typescript2": "^0.27.1",
     "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "@morenobr/guideline-react-hooks": "0.0.1"
   }
 }

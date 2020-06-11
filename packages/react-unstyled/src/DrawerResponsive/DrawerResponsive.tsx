@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { DrawerResponsiveProps } from "./DrawerResponsive.types";
 import Drawer from "../Drawer";
-// import useWindowWidth from "../../hooks/useWindowWidth";
-//TODO: import useWindowWidth from external lib
+import { useWindowWidth } from "@morenobr/guideline-react-hooks";
 
 interface DrawerPropsWithClassname extends DrawerResponsiveProps {
   classNameDrawer: string
@@ -22,8 +21,7 @@ const DrawerResponsive = ({
   appContent,
   ...otherProps
 }: DrawerPropsWithClassname) => {
-  // const width = useWindowWidth();
-  const width = 500;
+  const width = useWindowWidth();
   const [drawerAlwaysVisible, setDrawerAlwaysVisible] = useState(width >= minWidthDesktop)
   useEffect(()=>{
     const newDrawerAlwaysVisible= width >= minWidthDesktop;
