@@ -14,7 +14,7 @@ const tsconfigExcludeBuild = [
   ...tsconfig.exclude,
   "src/**/*.test.tsx",
 ];
-const externals = ["react", "react-dom"];
+const externals = ["react", "react-dom","@morenobr/guideline-react-hooks"];
 
 const getComponentNames = ()=>{
   const componentsDir = path.resolve(__dirname, 'src');
@@ -25,10 +25,13 @@ const getComponentNames = ()=>{
 const componentNames = getComponentNames();
 
 const isLibExternal = (id)=> {
-  const regexExternals = new RegExp(
-    "^(" + externals.join("|") + ")$"
+  const regexExternalsEquals = new RegExp(
+    "^(" + externals.map(e => e.replace('/', '\\/')).join("|") + ")$"
   );
-  return regexExternals.test(id);
+  const regexExternalsBegins = new RegExp(
+    "^(" + externals.map(e => e.replace('/', '\\/')).join("|") + ")"
+  );
+  return regexExternalsEquals.test(id) || regexExternalsBegins.test(id);
 }
 const isComponentExternal = (id)=>{
   const regexComponents = new RegExp(
