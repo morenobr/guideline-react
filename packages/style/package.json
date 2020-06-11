@@ -10,7 +10,8 @@
     "build:build": "rollup -c",
     "build:clean": "node buildClean.js",
     "build:watch": "nodemon -w src -e scss --exec rollup -c",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "echo \"Project style without lint\" && exit 0",
+    "test:coverage": "echo \"Project style without coverage\" && exit 0"
   },
   "repository": {
     "type": "git",

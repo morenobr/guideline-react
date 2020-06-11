@@ -11,7 +11,7 @@
     "build:without-minify": "rollup -c --environment MINIFY:false",
     "build:clean": "node buildClean.js",
     "build:watch": "rollup -c -w",
-    "lint": "eslint src",
+    "lint": "eslint src --ext js,jsx,ts,tsx",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest -w",
