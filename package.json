@@ -1,19 +1,26 @@
 {
-    "name": "@morenobr/guideline-monorepo",
-    "version": "0.1.0",
-    "description": "Moreno Guideline Monorepo",
-    "author": "Petherson Moreno",
-    "license": "MIT",
-    "private": true,
-    "workspaces": {
-        "packages": ["packages/*"],
-        "nohoist": []
-    },
-    "scripts": {
-        "build": "lerna exec yarn build",
-        "build:watch": "lerna exec yarn build:watch"
-    },
-    "devDependencies": {
-        "lerna": "^3.22.1"
-    }
+  "name": "@morenobr/guideline-monorepo",
+  "version": "0.1.0",
+  "description": "Moreno Guideline Monorepo",
+  "author": "Petherson Moreno",
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": []
+  },
+  "scripts": {
+    "lerna-projects": "lerna --scope=@morenobr/guideline-{react,react-hooks,react-styled,react-unstyled,style}",
+    "build": "yarn lerna-projects -- exec yarn build",
+    "build:watch": "yarn lerna-projects -- exec yarn build:watch",
+    "lint": "yarn lerna-projects -- exec yarn lint",
+    "test:coverage": "yarn lerna-projects -- exec yarn test:coverage",
+    "storybook": "lerna --scope=@morenobr/guideline-react-styled exec yarn storybook",
+    "deploy": "lerna --scope=@morenobr/guideline-react-styled exec yarn deploy"
+  },
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
 }
