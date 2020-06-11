@@ -1,7 +1,6 @@
 import React from 'react';
-import IconButtonToogle, { IconButtonToogleProps } from "../unstyled/IconButtonToogle";
-import useFontRoboto from '../hooks/useFontRoboto';
-import "../styles/IconButtonToogle.scss";
+import IconButtonToogle, { IconButtonToogleProps } from "@morenobr/guideline-react-unstyled/IconButtonToogle";
+import { useFontRoboto } from '@morenobr/guideline-react-hooks';
 
 interface IconButtonToogleStyledProps extends IconButtonToogleProps{
   className?: string;

@@ -4,146 +4,98 @@ import typescript from "rollup-plugin-typescript2";
 import commonjs from "rollup-plugin-commonjs";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import resolve from "rollup-plugin-node-resolve";
-import sass from "rollup-plugin-sass";
-import sassRuntime from 'sass';
 import { terser } from "rollup-plugin-terser";
-
 import packageJson from "./package.json";
 import tsconfig from "./tsconfig.json";
 
-const minify = true;
+const minify = process.env.MINIFY === undefined || process.env.MINIFY === true;
+
+const tsconfigExcludeBuild = [
+  ...tsconfig.exclude,
+  "src/**/*.test.tsx",
+];
+const externals = ["react", "react-dom","@morenobr/guideline-react-hooks","@morenobr/guideline-react-unstyled"];
 
 const getComponentNames = ()=>{
-  const componentsDir = path.resolve(__dirname, 'src', 'unstyled');
+  const componentsDir = path.resolve(__dirname, 'src');
   return fs.readdirSync(componentsDir)
     .filter(p => fs.lstatSync(path.resolve(componentsDir, p)).isDirectory());
 }
-
-const plugins = (tsconfigOverride) => [
-  peerDepsExternal(),
-  resolve(),
-  typescript({
-    tsconfigOverride: {
-      exclude: [
-        ...tsconfig.exclude,
-        "src/**/*.test.tsx",
-        "src/**/*.stories.tsx",
-      ],
-      ...tsconfigOverride,
-    },
-  }),
-  commonjs(),
-  sass({
-    // insert: true,
-    runtime: sassRuntime,
-    options: {
-      includePaths: ['node_modules'],
-      outputStyle: minify?'compressed':'expanded',
-    }
-  }),
-  ...(minify?[terser()]:[]),
-];
-const dirCjs = tsconfig.compilerOptions.declarationDir;
-const externals = ["react", "react-dom"];
 const componentNames = getComponentNames();
-const externalComponent = (id) => {
-  const regexExternals = new RegExp(
-    "^(\\.\\.\\/)+(" + externals.join("|") + ")$"
+
+const isLibExternal = (id)=> {
+  const regexExternalsEquals = new RegExp(
+    "^(" + externals.map(e => e.replace('/', '\\/')).join("|") + ")$"
   );
+  const regexExternalsBegins = new RegExp(
+    "^(" + externals.map(e => e.replace('/', '\\/')).join("|") + ")"
+  );
+  return regexExternalsEquals.test(id) || regexExternalsBegins.test(id);
+}
+const isComponentExternal = (id)=>{
   const regexComponents = new RegExp(
-    "^(\\.\\.\\/)+unstyled\\/(" + componentNames.join("|") + ")$"
-  );
-  const regexComponentsStyled = new RegExp(
     "^(\\.\\.\\/)+(" + componentNames.join("|") + ")$"
   );
-  if (
-    regexExternals.test(id) ||
-    regexComponents.test(id) ||
-    regexComponentsStyled.test(id)
-  ) {
-    return true;
-  }
-  return false;
-};
-const pluginsComponents = plugins({
-  compilerOptions: {
-    declaration: false,
-    noEmit: true,
-  }
-});
-export default [
-  ...componentNames.map((componentName) => ({
-    input: `src/unstyled/${componentName}/index.ts`,
-    output: [
-      {
-        file: `${dirCjs}/unstyled/${componentName}/index.js`,
-        format: "cjs",
-        exports: "named",
-        sourcemap: true,
-      },
-    ],
-    external: externalComponent,
-    plugins: pluginsComponents,
-  })),
-  {
-    input: "src/unstyled/index.ts",
-    output: [
-      {
-        file: `${dirCjs}/unstyled/index.js`,
-        format: "cjs",
-        exports: "named",
-        sourcemap: true,
-      },
-    ],
-    external: () => true,
+  return regexComponents.test(id);
+}
+
+const pluginTypescriptDeclarationNoEmit = typescript({
+  tsconfigOverride: {
+    exclude: tsconfigExcludeBuild,
+    compilerOptions: {
+      declaration: false,
+      noEmit: true,
+    }
   },
+});
+const pluginTypescriptDeclarationEmit = typescript({
+  tsconfigOverride: {
+    exclude: tsconfigExcludeBuild,
+    compilerOptions: {
+      declaration: true,
+      declarationDir: '.',
+    }
+  },
+});
+const pluginsMinify = (minify?[terser()]:[]);
+export default [
   ...componentNames.map((componentName) => ({
     input: `src/${componentName}/index.ts`,
     output: [
       {
-        file: `${dirCjs}/${componentName}/index.js`,
+        file: `./${componentName}/index.js`,
         format: "cjs",
         exports: "named",
         sourcemap: true,
       },
     ],
-    external: externalComponent,
-    plugins: pluginsComponents,
-  })),
-  ...componentNames.filter(c => c!=='DrawerResponsive').map((componentName) => ({
-    input: `src/styles/${componentName}.scss`,
-    output: {
-      file: `${dirCjs}/index.js`,//Replaced by next cjs build
-      format: 'es'
-    },
+    external: (id) => (isLibExternal(id) || isComponentExternal(id)),
     plugins: [
-      sass({
-        output: `styles/${componentName}.css`,
-        runtime: sassRuntime,
-        options: {
-          includePaths: ['node_modules'],
-          outputStyle: minify?'compressed':'expanded',
-        }
-      }),
+      peerDepsExternal(),
+      resolve(),
+      pluginTypescriptDeclarationNoEmit,
+      commonjs(),
+      ...pluginsMinify,
     ],
   })),
   {
     input: "src/index.ts",
     output: [
       {
-        file: `${dirCjs}/index.js`,
+        file: packageJson.main,
         format: "cjs",
         exports: "named",
         sourcemap: true,
       },
     ],
     external: () => true,
-    plugins: plugins({
-      compilerOptions: {
-        declaration: true,
-        declarationDir: dirCjs,
-      }
-    }),
+    plugins: [
+      peerDepsExternal(),
+      resolve(),
+      pluginTypescriptDeclarationNoEmit,
+      commonjs(),
+      ...pluginsMinify,
+    ],
   },
   {
     input: ["src/index.ts"],
@@ -155,10 +107,12 @@ export default [
         sourcemap: true,
       },
     ],
-    plugins: plugins({
-      compilerOptions: {
-        declaration: false,
-      }
-    }),
+    plugins: [
+      peerDepsExternal(),
+      resolve(),
+      pluginTypescriptDeclarationEmit,
+      commonjs(),
+      ...pluginsMinify,
+    ]
   },
 ];

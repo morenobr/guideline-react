@@ -1,7 +1,6 @@
 import React from 'react';
-import TopAppBar, { TopAppBarProps } from "../unstyled/TopAppBar";
-import useFontRoboto from '../hooks/useFontRoboto';
-import "../styles/TopAppBar.scss";
+import TopAppBar, { TopAppBarProps } from "@morenobr/guideline-react-unstyled/TopAppBar";
+import { useFontRoboto } from '@morenobr/guideline-react-hooks';
 
 interface TopAppBarStyledProps extends TopAppBarProps{
   className?: string;

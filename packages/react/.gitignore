@@ -1,12 +1,6 @@
 /node_modules
 /coverage
-/storybook-static
-/unstyled
-/styles
-/helpers
-/hooks
 /index*
-/types.d*
 /Button
 /FloatingActionButton
 /IconButton
@@ -14,3 +8,4 @@
 /List
 /TopAppBar
 /Drawer
+/DrawerResponsive

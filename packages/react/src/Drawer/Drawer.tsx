@@ -1,7 +1,6 @@
 import React from 'react';
-import Drawer, { DrawerProps } from "../unstyled/Drawer";
-import useFontRoboto from '../hooks/useFontRoboto';
-import "../styles/Drawer.scss";
+import Drawer, { DrawerProps } from "@morenobr/guideline-react-unstyled/Drawer";
+import { useFontRoboto } from '@morenobr/guideline-react-hooks';
 
 export default (props:DrawerProps) => {
   useFontRoboto();

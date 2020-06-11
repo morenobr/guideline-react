@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListGroup, ListGroupProps } from "../unstyled/List";
+import { ListGroup, ListGroupProps } from "@morenobr/guideline-react-unstyled/List";
 
 interface ListGroupStyledProps extends ListGroupProps{
   className?: string;

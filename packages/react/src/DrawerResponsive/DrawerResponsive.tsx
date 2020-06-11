@@ -1,6 +1,5 @@
 import React from 'react';
-import DrawerResponsive, { DrawerResponsiveProps } from "../unstyled/DrawerResponsive";
-import '../Drawer';
+import DrawerResponsive, { DrawerResponsiveProps } from "@morenobr/guideline-react-unstyled/DrawerResponsive";
 
 export default (props:DrawerResponsiveProps) => { 
   return (

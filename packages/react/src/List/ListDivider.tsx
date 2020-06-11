@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListDivider, ListDividerProps } from "../unstyled/List";
+import { ListDivider, ListDividerProps } from "@morenobr/guideline-react-unstyled/List";
 
 interface ListDividerStyledProps extends ListDividerProps{
   className?: string;

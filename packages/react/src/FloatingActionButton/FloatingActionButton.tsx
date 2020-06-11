@@ -1,7 +1,6 @@
 import React from 'react';
-import FloatingActionButton, { FabProps } from "../unstyled/FloatingActionButton";
-import "../styles/FloatingActionButton.scss";
-import useFontRoboto from '../hooks/useFontRoboto';
+import FloatingActionButton, { FabProps } from "@morenobr/guideline-react-unstyled/FloatingActionButton";
+import { useFontRoboto } from '@morenobr/guideline-react-hooks';
 
 interface ButtonStyledProps extends FabProps{
   className?: string;
