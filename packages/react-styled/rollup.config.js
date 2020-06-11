@@ -45,26 +45,6 @@ const pluginTypescriptDeclarationEmit = typescript({
 });
 const pluginsMinify = (minify?[terser()]:[]);
 export default [
-  // {
-  //   input: "src/index.ts",
-  //   output: [
-      // {
-      //   file: packageJson.main,
-      //   format: "cjs",
-      //   exports: "named",
-      //   sourcemap: true,
-      // },
-  //   ],
-  //   external: (id) => isLibExternal(id),
-  //   plugins: [
-  //     postcss(),
-  //     peerDepsExternal(),
-  //     resolve(),
-  //     pluginTypescriptDeclarationNoEmit,
-  //     commonjs(),
-  //     ...pluginsMinify,
-  //   ],
-  // },
   {
     input: ["src/index.ts"],
     output: [

@@ -42,18 +42,6 @@ export default [
         exports: "named",
         sourcemap: true,
       },
-    ],
-    plugins: [
-      peerDepsExternal(),
-      resolve(),
-      pluginTypescriptDeclarationNoEmit,
-      commonjs(),
-      ...pluginsMinify,
-    ],
-  },
-  {
-    input: ["src/index.ts"],
-    output: [
       {
         file: packageJson.module,
         format: "esm",
