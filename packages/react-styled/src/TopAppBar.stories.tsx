@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import TopAppBar from './TopAppBar';
-import IconButton from '../IconButton';
+import { TopAppBar, IconButton } from './index';
 
 export default {
   title: "TopAppBar"

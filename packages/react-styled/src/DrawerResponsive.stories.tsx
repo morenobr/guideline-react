@@ -1,9 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import DrawerResponsive from './DrawerResponsive';
-import { List, ListItem } from '../List';
-import Button from '../Button';
-import TopAppBar from '../TopAppBar';
-import IconButton from '../IconButton';
+import { DrawerResponsive, List, ListItem, Button, TopAppBar, IconButton } from './index';
 
 export default {
   title: "DrawerResponsive"

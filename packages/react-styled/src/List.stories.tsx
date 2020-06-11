@@ -1,6 +1,5 @@
 import React from "react";
-import { List, ListItem, ListDivider, ListGroup, ListGroupItem } from './index';
-import IconButton from '../IconButton';
+import { List, ListItem, ListDivider, ListGroup, ListGroupItem, IconButton } from './index';
 
 export default {
   title: "List"

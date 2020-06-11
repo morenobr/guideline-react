@@ -1,16 +1,4 @@
 /node_modules
 /coverage
+/dist
 /storybook-static
-/unstyled
-/styles
-/helpers
-/hooks
-/index*
-/types.d*
-/Button
-/FloatingActionButton
-/IconButton
-/IconButtonToogle
-/List
-/TopAppBar
-/Drawer

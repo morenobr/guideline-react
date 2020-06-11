@@ -1,149 +1,57 @@
-import fs from 'fs';
-import path from 'path';
 import typescript from "rollup-plugin-typescript2";
 import commonjs from "rollup-plugin-commonjs";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import resolve from "rollup-plugin-node-resolve";
-import sass from "rollup-plugin-sass";
-import sassRuntime from 'sass';
 import { terser } from "rollup-plugin-terser";
-
+import postcss from 'rollup-plugin-postcss'
 import packageJson from "./package.json";
 import tsconfig from "./tsconfig.json";
 
-const minify = true;
+const minify = process.env.MINIFY === undefined || process.env.MINIFY === true;
 
-const getComponentNames = ()=>{
-  const componentsDir = path.resolve(__dirname, 'src', 'unstyled');
-  return fs.readdirSync(componentsDir)
-    .filter(p => fs.lstatSync(path.resolve(componentsDir, p)).isDirectory());
-}
-
-const plugins = (tsconfigOverride) => [
-  peerDepsExternal(),
-  resolve(),
-  typescript({
-    tsconfigOverride: {
-      exclude: [
-        ...tsconfig.exclude,
-        "src/**/*.test.tsx",
-        "src/**/*.stories.tsx",
-      ],
-      ...tsconfigOverride,
-    },
-  }),
-  commonjs(),
-  sass({
-    // insert: true,
-    runtime: sassRuntime,
-    options: {
-      includePaths: ['node_modules'],
-      outputStyle: minify?'compressed':'expanded',
-    }
-  }),
-  ...(minify?[terser()]:[]),
+const tsconfigExcludeBuild = [
+  ...tsconfig.exclude,
+  "src/**/*.test.tsx",
+  "src/**/*.stories.tsx",
 ];
-const dirCjs = tsconfig.compilerOptions.declarationDir;
-const externals = ["react", "react-dom"];
-const componentNames = getComponentNames();
-const externalComponent = (id) => {
-  const regexExternals = new RegExp(
-    "^(\\.\\.\\/)+(" + externals.join("|") + ")$"
-  );
-  const regexComponents = new RegExp(
-    "^(\\.\\.\\/)+unstyled\\/(" + componentNames.join("|") + ")$"
-  );
-  const regexComponentsStyled = new RegExp(
-    "^(\\.\\.\\/)+(" + componentNames.join("|") + ")$"
-  );
-  if (
-    regexExternals.test(id) ||
-    regexComponents.test(id) ||
-    regexComponentsStyled.test(id)
-  ) {
-    return true;
-  }
-  return false;
-};
-const pluginsComponents = plugins({
-  compilerOptions: {
-    declaration: false,
-    noEmit: true,
-  }
-});
-export default [
-  ...componentNames.map((componentName) => ({
-    input: `src/unstyled/${componentName}/index.ts`,
-    output: [
-      {
-        file: `${dirCjs}/unstyled/${componentName}/index.js`,
-        format: "cjs",
-        exports: "named",
-        sourcemap: true,
-      },
-    ],
-    external: externalComponent,
-    plugins: pluginsComponents,
-  })),
-  {
-    input: "src/unstyled/index.ts",
-    output: [
-      {
-        file: `${dirCjs}/unstyled/index.js`,
-        format: "cjs",
-        exports: "named",
-        sourcemap: true,
-      },
-    ],
-    external: () => true,
+const pluginTypescriptDeclarationNoEmit = typescript({
+  tsconfigOverride: {
+    exclude: tsconfigExcludeBuild,
+    compilerOptions: {
+      declaration: false,
+      noEmit: true,
+    }
   },
-  ...componentNames.map((componentName) => ({
-    input: `src/${componentName}/index.ts`,
-    output: [
-      {
-        file: `${dirCjs}/${componentName}/index.js`,
-        format: "cjs",
-        exports: "named",
-        sourcemap: true,
-      },
-    ],
-    external: externalComponent,
-    plugins: pluginsComponents,
-  })),
-  ...componentNames.filter(c => c!=='DrawerResponsive').map((componentName) => ({
-    input: `src/styles/${componentName}.scss`,
-    output: {
-      file: `${dirCjs}/index.js`,//Replaced by next cjs build
-      format: 'es'
-    },
-    plugins: [
-      sass({
-        output: `styles/${componentName}.css`,
-        runtime: sassRuntime,
-        options: {
-          includePaths: ['node_modules'],
-          outputStyle: minify?'compressed':'expanded',
-        }
-      }),
-    ],
-  })),
+});
+const pluginTypescriptDeclarationEmit = typescript({
+  tsconfigOverride: {
+    exclude: tsconfigExcludeBuild,
+    compilerOptions: {
+      declaration: true,
+      declarationDir: 'dist/',
+    }
+  },
+});
+const pluginsMinify = (minify?[terser()]:[]);
+export default [
   {
     input: "src/index.ts",
     output: [
       {
-        file: `${dirCjs}/index.js`,
+        file: packageJson.main,
         format: "cjs",
         exports: "named",
         sourcemap: true,
       },
     ],
-    external: () => true,
-    plugins: plugins({
-      compilerOptions: {
-        declaration: true,
-        declarationDir: dirCjs,
-      }
-    }),
+    plugins: [
+      postcss(),
+      peerDepsExternal(),
+      resolve(),
+      pluginTypescriptDeclarationNoEmit,
+      commonjs(),
+      ...pluginsMinify,
+    ],
   },
   {
     input: ["src/index.ts"],
@@ -155,10 +63,13 @@ export default [
         sourcemap: true,
       },
     ],
-    plugins: plugins({
-      compilerOptions: {
-        declaration: false,
-      }
-    }),
+    plugins: [
+      postcss(),
+      peerDepsExternal(),
+      resolve(),
+      pluginTypescriptDeclarationEmit,
+      commonjs(),
+      ...pluginsMinify,
+    ]
   },
 ];

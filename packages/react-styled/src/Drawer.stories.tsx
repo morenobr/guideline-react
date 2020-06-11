@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import Drawer from './Drawer';
-import { List, ListItem } from '../List';
-import Button from '../Button';
+import { Drawer, List, ListItem, Button } from './index';
 
 export default {
   title: "Drawer"

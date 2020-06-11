@@ -5,9 +5,10 @@
     "author": "Petherson Moreno",
     "license": "MIT",
     "private": true,
-    "workspaces": [
-        "packages/*"
-    ],
+    "workspaces": {
+        "packages": ["packages/*"],
+        "nohoist": []
+    },
     "scripts": {
         "build": "lerna exec yarn build",
         "build:watch": "lerna exec yarn build:watch"

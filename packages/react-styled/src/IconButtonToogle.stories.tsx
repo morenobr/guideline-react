@@ -1,5 +1,5 @@
 import React from "react";
-import IconButtonToogle from './IconButtonToogle';
+import { IconButtonToogle } from './index';
 
 export default {
   title: "IconButtonToogle"
