@@ -20,7 +20,13 @@
     "storybook": "lerna --scope=@morenobr/guideline-react-styled exec yarn storybook",
     "deploy": "lerna --scope=@morenobr/guideline-react-styled exec yarn deploy"
   },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn lint && yarn test:coverage"
+    }
+  },
   "devDependencies": {
+    "husky": "^4.2.5",
     "lerna": "^3.22.1"
   }
 }
