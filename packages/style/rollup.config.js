@@ -1,3 +1,5 @@
+import path from 'path';
+import fs from 'fs';
 import sass from "rollup-plugin-sass";
 import sassRuntime from 'sass';
 
@@ -10,6 +12,39 @@ const componentNames = [
   'List',
   'TopAppBar',
 ];
+
+const licenseTextToCssCommentLines = (licenseText) =>licenseText.split("\n").map(l => " *"+(l?' ':'')+l).join("\n");
+
+const addAllLicensesToCss = ({fileCss})=>{
+  return {
+    name: 'add-all-licenses-to-css',
+    writeBundle: (options, bundle) => {
+      const contentFileCss = fs.readFileSync(fileCss).toString();
+      if(contentFileCss){
+        const fileLicenseMaterialDesign = path.resolve(__dirname, 'src', 'ALL_MATERIAL_DESIGN_LICENSE')
+        const contentFileLicenseMaterialDesign = licenseTextToCssCommentLines(fs.readFileSync(fileLicenseMaterialDesign).toString());
+        const fileLicenseProject = path.resolve(__dirname, 'LICENSE')
+        const contentFileLicenseProject = licenseTextToCssCommentLines(fs.readFileSync(fileLicenseProject).toString());
+        const contentLicense = contentFileLicenseMaterialDesign+"\n"+licenseTextToCssCommentLines("\n---------------------------------------\n\nOthers have the following license:\n")+"\n"+contentFileLicenseProject;
+        const licenseToCss = "/*\n"+contentLicense+"\n */\n";
+        fs.writeFileSync(fileCss, licenseToCss+contentFileCss);
+      }
+    }
+  }
+}
+const addLicenseToCss = ({fileCss, fileLicense})=>{
+  return {
+    name: 'add-license-to-css',
+    writeBundle: (options, bundle) => {
+      const contentFileCss = fs.readFileSync(fileCss).toString();
+      if(contentFileCss){
+        const contentFileLicense = fs.readFileSync(fileLicense).toString();
+        const licenseToCss = "/*\n"+licenseTextToCssCommentLines(contentFileLicense)+"\n */\n";
+        fs.writeFileSync(fileCss, licenseToCss+contentFileCss);
+      }
+    }
+  }
+}
 const finalMessage = (message) => {
   return {
     name: 'final-message',
@@ -26,7 +61,7 @@ const finalMessage = (message) => {
 
 export default [
   ...componentNames.map((componentName) => ({
-    input: `src/${componentName}.scss`,
+    input: `src/${componentName}/${componentName}.scss`,
     output: {
       file: `./temp-buildjs.js`,
       format: 'es'
@@ -40,10 +75,14 @@ export default [
           outputStyle: 'expanded',
         }
       }),
+      addLicenseToCss({
+        fileCss: path.resolve(__dirname, `${componentName}.css`), 
+        fileLicense: path.resolve(__dirname, 'src', componentName, 'LICENSE')
+      })
     ],
   })),
   ...componentNames.map((componentName) => ({
-    input: `src/${componentName}.scss`,
+    input: `src/${componentName}/${componentName}.scss`,
     output: {
       file: `./temp-buildjs.js`,
       format: 'es'
@@ -57,6 +96,10 @@ export default [
           outputStyle: 'compressed',
         }
       }),
+      addLicenseToCss({
+        fileCss: path.resolve(__dirname, `${componentName}.min.css`), 
+        fileLicense: path.resolve(__dirname, 'src', componentName, 'LICENSE')
+      })
     ],
   })),
   {
@@ -74,6 +117,9 @@ export default [
           outputStyle: 'expanded',
         }
       }),
+      addAllLicensesToCss({
+        fileCss: path.resolve(__dirname, `all.css`), 
+      }),
     ],
   },
   {
@@ -90,6 +136,9 @@ export default [
           includePaths: ['node_modules'],
           outputStyle: 'compressed',
         }
+      }),
+      addAllLicensesToCss({
+        fileCss: path.resolve(__dirname, `all.min.css`), 
       }),
       finalMessage('Build completed'),
     ],
