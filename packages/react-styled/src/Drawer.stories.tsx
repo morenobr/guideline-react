@@ -114,7 +114,7 @@ export const FixedAlwaysOpen = () => {
   );
   return (
     <>
-      <Drawer fixed animate dismissible open appContent={content}>
+      <Drawer fixed animate open appContent={content}>
         <List asNavigation>
           <ListItem href="#" text="Home" contentLeft="house" activated={menuSelected === 'home'} onClick={changePage('home')} />
           <ListItem href="#" text="Inbox" contentLeft="inbox" activated={menuSelected === 'inbox'} onClick={changePage('inbox')} />

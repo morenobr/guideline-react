@@ -37,7 +37,7 @@ export const Basic = () => (
     </p>
     <h3>outlined + raised + icon</h3>
     <p>
-      <Button outlined raised icon="bookmark" label="Outlined + Raised + touch + icon" />
+      <Button outlined raised icon="bookmark" label="Outlined + Raised + icon" />
     </p>
     <h3>Touch - Just button</h3>
     <p>
