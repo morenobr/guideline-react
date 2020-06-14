@@ -4,6 +4,7 @@
   "description": "Moreno Guildeline styles with SASS (.scss files)",
   "main": "index.js",
   "scripts": {
+    "prepare": "npm run build",
     "prepack": "npm run build",
     "postpack": "npm run build:clean",
     "build": "npm-run-all build:clean build:build",

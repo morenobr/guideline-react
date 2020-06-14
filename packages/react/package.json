@@ -6,6 +6,7 @@
   "module": "index.es.js",
   "types": "index.d.ts",
   "scripts": {
+    "prepare": "npm run build",
     "build": "npm-run-all build:clean build:build",
     "build:build": "rollup -c",
     "build:without-minify": "rollup -c --environment MINIFY:false",
