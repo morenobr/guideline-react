@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
+    "@morenobr/guideline-style": "0.0.1",
     "@storybook/react": "^5.3.19",
     "@testing-library/jest-dom": "^5.10.0",
     "@testing-library/react": "^10.2.1",
