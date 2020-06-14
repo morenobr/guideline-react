@@ -11,6 +11,12 @@
     ],
     "nohoist": []
   },
+  "workspaces-hoist-only-react": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": ["**/!(react|react-dom)"]
+  },
   "scripts": {
     "lerna-projects": "lerna --scope=@morenobr/guideline-{react,react-hooks,react-styled,react-unstyled,style}",
     "build": "yarn lerna-projects exec yarn build",
