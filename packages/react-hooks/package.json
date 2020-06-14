@@ -1,6 +1,6 @@
 {
   "name": "@morenobr/guideline-react-hooks",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Moreno Guideline hooks React used in Guideline",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
