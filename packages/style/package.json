@@ -1,6 +1,6 @@
 {
   "name": "@morenobr/guideline-style",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Moreno Guildeline styles with SASS (.scss files)",
   "main": "index.js",
   "publishConfig": {
