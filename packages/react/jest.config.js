@@ -4,7 +4,7 @@ module.exports = {
   moduleFileExtensions: ["ts", "tsx", "js"],
   testPathIgnorePatterns: ["node_modules/", "dist/"],
   transform: {
-    "^.+\\.tsx?$": "@morenobr/guideline-react-jest/babelTransform.js",
+    "^.+\\.tsx?$": "babel-jest",
   },
   testMatch: ["**/*.test.(ts|tsx)"],
   collectCoverageFrom: ["src/**"],
