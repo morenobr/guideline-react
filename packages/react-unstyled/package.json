@@ -7,8 +7,6 @@
   "types": "index.d.ts",
   "scripts": {
     "prepare": "npm run build",
-    "prepack": "npm run build",
-    "postpack": "npm run build:clean",
     "build": "npm-run-all build:clean build:build",
     "build:build": "rollup -c",
     "build:without-minify": "rollup -c --environment MINIFY:false",
