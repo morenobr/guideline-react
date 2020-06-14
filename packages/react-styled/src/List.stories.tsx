@@ -75,45 +75,45 @@ export const SingleLine = () => (
     </List>
     <h3>With icon button on left</h3>
     <List>
-      <ListItem text="Two-lines item 1" contentLeft={<IconButton icon="favorite" />} />
-      <ListItem text="Two-lines item 2" contentLeft={<IconButton icon="favorite" />} />
-      <ListItem text="Two-lines item 3" contentLeft={<IconButton icon="favorite" />} />
+      <ListItem text="Single-line item 1" contentLeft={<IconButton icon="favorite" />} />
+      <ListItem text="Single-line item 2" contentLeft={<IconButton icon="favorite" />} />
+      <ListItem text="Single-line item 3" contentLeft={<IconButton icon="favorite" />} />
     </List>
     <h3>With icon button on right</h3>
     <List>
-      <ListItem text="Two-lines item 1" contentRight={<IconButton icon="favorite" />} />
-      <ListItem text="Two-lines item 2" contentRight={<IconButton icon="favorite" />} />
-      <ListItem text="Two-lines item 3" contentRight={<IconButton icon="favorite" />} />
+      <ListItem text="Single-line item 1" contentRight={<IconButton icon="favorite" />} />
+      <ListItem text="Single-line item 2" contentRight={<IconButton icon="favorite" />} />
+      <ListItem text="Single-line item 3" contentRight={<IconButton icon="favorite" />} />
     </List>
     <h3>With icon button on left and right</h3>
     <List>
-      <ListItem text="Two-lines item 1" contentLeft={<IconButton icon="favorite" />} contentRight={<IconButton icon="favorite" />} />
-      <ListItem text="Two-lines item 2" contentLeft={<IconButton icon="favorite" />} contentRight={<IconButton icon="favorite" />} />
-      <ListItem text="Two-lines item 3" contentLeft={<IconButton icon="favorite" />} contentRight={<IconButton icon="favorite" />} />
+      <ListItem text="Single-line item 1" contentLeft={<IconButton icon="favorite" />} contentRight={<IconButton icon="favorite" />} />
+      <ListItem text="Single-line item 2" contentLeft={<IconButton icon="favorite" />} contentRight={<IconButton icon="favorite" />} />
+      <ListItem text="Single-line item 3" contentLeft={<IconButton icon="favorite" />} contentRight={<IconButton icon="favorite" />} />
     </List>
     <h3>With icon material ui only on left</h3>
     <List>
-      <ListItem text="Two-lines item 1" contentLeft="favorite" />
-      <ListItem text="Two-lines item 2" contentLeft="favorite" />
-      <ListItem text="Two-lines item 3" contentLeft="favorite" />
+      <ListItem text="Single-line item 1" contentLeft="favorite" />
+      <ListItem text="Single-line item 2" contentLeft="favorite" />
+      <ListItem text="Single-line item 3" contentLeft="favorite" />
     </List>
     <h3>With icon svg only on left</h3>
     <List>
-      <ListItem text="Two-lines item 1" contentLeft={svg} />
-      <ListItem text="Two-lines item 2" contentLeft={svg} />
-      <ListItem text="Two-lines item 3" contentLeft={svg} />
+      <ListItem text="Single-line item 1" contentLeft={svg} />
+      <ListItem text="Single-line item 2" contentLeft={svg} />
+      <ListItem text="Single-line item 3" contentLeft={svg} />
     </List>
     <h3>With icon material ui only on right</h3>
     <List>
-      <ListItem text="Two-lines item 1" contentRight="favorite" />
-      <ListItem text="Two-lines item 2" contentRight="favorite" />
-      <ListItem text="Two-lines item 3" contentRight="favorite" />
+      <ListItem text="Single-line item 1" contentRight="favorite" />
+      <ListItem text="Single-line item 2" contentRight="favorite" />
+      <ListItem text="Single-line item 3" contentRight="favorite" />
     </List>
     <h3>With icon svg only on right</h3>
     <List>
-      <ListItem text="Two-lines item 1" contentRight={svg} />
-      <ListItem text="Two-lines item 2" contentRight={svg} />
-      <ListItem text="Two-lines item 3" contentRight={svg} />
+      <ListItem text="Single-line item 1" contentRight={svg} />
+      <ListItem text="Single-line item 2" contentRight={svg} />
+      <ListItem text="Single-line item 3" contentRight={svg} />
     </List>
   </div>
 );
