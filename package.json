@@ -26,7 +26,8 @@
     "test": "jest",
     "test:coverage": "yarn lerna-projects exec yarn test:coverage",
     "storybook": "lerna --scope=@morenobr/guideline-react-styled exec yarn storybook",
-    "deploy": "lerna --scope=@morenobr/guideline-react-styled exec yarn deploy"
+    "deploy": "lerna --scope=@morenobr/guideline-react-styled exec yarn deploy",
+    "publish:projects": "lerna publish",
   },
   "husky": {
     "hooks": {
