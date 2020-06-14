@@ -23,6 +23,7 @@
     "build": "yarn lerna-projects exec yarn build",
     "build:watch": "yarn lerna-projects exec yarn build:watch",
     "lint": "yarn lerna-projects exec yarn lint",
+    "test": "jest",
     "test:coverage": "yarn lerna-projects exec yarn test:coverage",
     "storybook": "lerna --scope=@morenobr/guideline-react-styled exec yarn storybook",
     "deploy": "lerna --scope=@morenobr/guideline-react-styled exec yarn deploy"
@@ -34,6 +35,7 @@
   },
   "devDependencies": {
     "husky": "^4.2.5",
+    "jest": "^26.0.1",
     "lerna": "^3.22.1"
   }
 }

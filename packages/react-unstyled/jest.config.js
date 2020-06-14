@@ -4,7 +4,7 @@ module.exports = {
   moduleFileExtensions: ["ts", "tsx", "js"],
   testPathIgnorePatterns: ["node_modules/", "dist/"],
   transform: {
-    "^.+\\.tsx?$": "babel-jest",
+    "^.+\\.tsx?$": ["babel-jest", { cwd: __dirname }],
   },
   testMatch: ["**/*.test.(ts|tsx)"],
   collectCoverageFrom: ["src/**"],
