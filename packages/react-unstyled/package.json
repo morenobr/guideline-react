@@ -1,6 +1,6 @@
 {
   "name": "@morenobr/guideline-react-unstyled",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "Moreno Guideline components React unstyled",
   "main": "index.js",
   "module": "index.es.js",
@@ -73,6 +73,6 @@
     "typescript": "^3.9.5"
   },
   "dependencies": {
-    "@morenobr/guideline-react-hooks": "0.0.1"
+    "@morenobr/guideline-react-hooks": "^0.1.1"
   }
 }
