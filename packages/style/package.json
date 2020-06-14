@@ -3,6 +3,9 @@
   "version": "0.1.1",
   "description": "Moreno Guildeline styles with SASS (.scss files)",
   "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prepare": "npm run build",
     "build": "npm-run-all build:clean build:build",

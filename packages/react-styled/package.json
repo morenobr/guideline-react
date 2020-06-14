@@ -5,6 +5,9 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prepack": "npm run build",
     "build": "npm-run-all build:clean build:build",

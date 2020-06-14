@@ -5,6 +5,9 @@
   "main": "index.js",
   "module": "index.es.js",
   "types": "index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prepare": "npm run build",
     "build": "npm-run-all build:clean build:build",
