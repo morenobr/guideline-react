@@ -1,0 +1,95 @@
+{
+  "name": "@morenobr/guideline-react-styled",
+  "version": "0.1.3",
+  "description": "Moreno Guideline components React with CSS class names defined with CSS included with JS",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepack": "npm run build",
+    "build": "npm-run-all build:clean build:build",
+    "build:build": "rollup -c",
+    "build:without-minify": "rollup -c --environment MINIFY:false",
+    "build:clean": "node buildClean.js",
+    "build:watch": "rollup -c -w",
+    "lint": "eslint src --ext js,jsx,ts,tsx",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest -w",
+    "test:watch-coverage": "jest -w --coverage",
+    "storybook": "npm run storybook:start",
+    "storybook:start": "start-storybook -p 6006",
+    "storybook:build": "build-storybook",
+    "predeploy": "npm run storybook:build",
+    "postdeploy": "rm -rf storybook-static",
+    "deploy": "gh-pages -d storybook-static"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/morenobr/moreno-guideline-react.git"
+  },
+  "keywords": [
+    "library",
+    "guideline",
+    "moreno",
+    "react",
+    "styled",
+    "rollup",
+    "lerna"
+  ],
+  "author": "Petherson Moreno",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/morenobr/moreno-guideline-react/issues"
+  },
+  "homepage": "https://github.com/morenobr/moreno-guideline-react#readme",
+  "peerDependencies": {
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@morenobr/guideline-style": "^0.1.3",
+    "@storybook/react": "^5.3.19",
+    "@testing-library/jest-dom": "^5.10.0",
+    "@testing-library/react": "^10.2.1",
+    "@types/jest": "^26.0.0",
+    "@types/react": "^16.9.36",
+    "@types/react-dom": "^16.9.8",
+    "@typescript-eslint/eslint-plugin": "^3.2.0",
+    "@typescript-eslint/parser": "^3.2.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.0.1",
+    "babel-loader": "^8.1.0",
+    "babel-preset-react-app": "^9.1.2",
+    "eslint": "^7.2.0",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-plugin-flowtype": "^5.1.3",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "gh-pages": "^3.0.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.0.1",
+    "npm-run-all": "^4.1.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "rollup": "^2.15.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.2",
+    "rollup-plugin-postcss": "^3.1.2",
+    "rollup-plugin-terser": "^6.1.0",
+    "rollup-plugin-typescript2": "^0.27.1",
+    "storybook": "^5.3.19",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "@morenobr/guideline-react": "^0.1.3",
+    "@morenobr/guideline-react-hooks": "^0.1.3"
+  }
+}
