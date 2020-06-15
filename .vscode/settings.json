@@ -1,0 +1,9 @@
+{
+  "eslint.workingDirectories": [
+    "packages/react",
+    "packages/react-hooks",
+    "packages/react-styled",
+    "packages/react-unstyled",
+    "packages/style",
+  ]
+}
