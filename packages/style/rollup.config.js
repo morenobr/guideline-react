@@ -10,6 +10,7 @@ const componentNames = [
   'IconButton',
   'IconButtonToogle',
   'List',
+  'TextField',
   'TopAppBar',
 ];
 
@@ -58,7 +59,7 @@ const finalMessage = (message) => {
     }
   };
 }
-
+const sassIncludePaths = [path.resolve(__dirname, 'node_modules'), path.resolve(__dirname, '..', '..', 'node_modules')];
 export default [
   ...componentNames.map((componentName) => ({
     input: `src/${componentName}/${componentName}.scss`,
@@ -71,7 +72,7 @@ export default [
         output: `${componentName}.css`,
         runtime: sassRuntime,
         options: {
-          includePaths: ['node_modules'],
+          includePaths: sassIncludePaths,
           outputStyle: 'expanded',
         }
       }),
@@ -92,7 +93,7 @@ export default [
         output: `${componentName}.min.css`,
         runtime: sassRuntime,
         options: {
-          includePaths: ['node_modules'],
+          includePaths: sassIncludePaths,
           outputStyle: 'compressed',
         }
       }),
@@ -113,7 +114,7 @@ export default [
         output: `all.css`,
         runtime: sassRuntime,
         options: {
-          includePaths: ['node_modules'],
+          includePaths: sassIncludePaths,
           outputStyle: 'expanded',
         }
       }),
@@ -133,7 +134,7 @@ export default [
         output: `all.min.css`,
         runtime: sassRuntime,
         options: {
-          includePaths: ['node_modules'],
+          includePaths: sassIncludePaths,
           outputStyle: 'compressed',
         }
       }),

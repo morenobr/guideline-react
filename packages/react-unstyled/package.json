@@ -76,6 +76,7 @@
     "typescript": "^3.9.5"
   },
   "dependencies": {
-    "@morenobr/guideline-react-hooks": "^0.1.3"
+    "@morenobr/guideline-react-hooks": "^0.1.3",
+    "react-uid": "^2.3.0"
   }
 }

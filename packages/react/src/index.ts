@@ -4,6 +4,7 @@ import DrawerResponsive from './DrawerResponsive'
 import FloatingActionButton from './FloatingActionButton'
 import IconButton from './IconButton'
 import IconButtonToogle from './IconButtonToogle'
+import TextField, { TextFieldIcon } from './TextField'
 import TopAppBar from './TopAppBar'
 export * from './List';
 
@@ -14,5 +15,6 @@ export {
   FloatingActionButton,
   IconButton,
   IconButtonToogle,
+  TextField, TextFieldIcon,
   TopAppBar,
 };
