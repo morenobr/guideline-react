@@ -25,15 +25,6 @@ const tsconfigExcludeBuild = [
   "src/**/*.test.tsx",
   "src/**/*.stories.tsx",
 ];
-const pluginTypescriptDeclarationNoEmit = typescript({
-  tsconfigOverride: {
-    exclude: tsconfigExcludeBuild,
-    compilerOptions: {
-      declaration: false,
-      noEmit: true,
-    }
-  },
-});
 const pluginTypescriptDeclarationEmit = typescript({
   tsconfigOverride: {
     exclude: tsconfigExcludeBuild,

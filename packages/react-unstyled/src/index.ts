@@ -5,6 +5,7 @@ import DrawerResponsive, { DrawerResponsiveProps } from './DrawerResponsive';
 import IconButton, { IconButtonProps } from './IconButton';
 import IconButtonToogle, { IconButtonToogleProps } from './IconButtonToogle';
 import FloatingActionButton, { FabProps } from './FloatingActionButton';
+import TextField, { TextFieldIcon, TextFieldProps, TextFieldIconProps } from './TextField';
 import TopAppBar, { TopAppBarProps } from './TopAppBar';
 export * from './List';
 
@@ -16,5 +17,6 @@ export {
   IconButton, IconButtonProps,
   IconButtonToogle, IconButtonToogleProps,
   FloatingActionButton, FabProps,
+  TextField, TextFieldIcon, TextFieldProps, TextFieldIconProps,
   TopAppBar, TopAppBarProps,
 };

@@ -10,6 +10,7 @@ const componentNames = [
   'IconButton',
   'IconButtonToogle',
   'List',
+  'TextField',
   'TopAppBar',
 ];
 
