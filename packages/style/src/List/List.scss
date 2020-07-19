@@ -481,31 +481,6 @@
   }
 }
 
-.mg-list-divider {
-  height: 0;
-  margin: 0;
-  border: none;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: rgba(0, 0, 0, 0.12);
-
-  // variants
-
-  &.padded {
-    margin: 0 16px;
-  }
-  &.inset {
-    margin-left: 72px;
-    margin-right: 0;
-    width: calc(100% - 72px);
-  }
-  &.inset.padded {
-    width: calc(100% - 72px - 16px);
-  }
-}
-
-
-
 // List Group
 
 .mg-list-group{
@@ -593,10 +568,6 @@
       }
     }
   }
-}
-
-.mg-list-divider.drawer {
-  margin: 3px 0 4px;
 }
 
 .mg-list-group.drawer{

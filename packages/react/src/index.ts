@@ -1,4 +1,5 @@
 import Button from './Button'
+import Divider from './Divider'
 import Drawer from './Drawer'
 import DrawerResponsive from './DrawerResponsive'
 import FloatingActionButton from './FloatingActionButton'
@@ -10,6 +11,7 @@ export * from './List';
 
 export {
   Button,
+  Divider,
   Drawer,
   DrawerResponsive,
   FloatingActionButton,

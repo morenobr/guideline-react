@@ -1,7 +1,7 @@
 import { ListItemProps } from './ListItem';
-import { ListDividerProps } from './ListDivider';
+import { DividerProps } from '../Divider';
 export interface ListProps {
-  children: React.ReactElement<ListItemProps, 'li'> | React.ReactElement<ListDividerProps,'li'> | Array<React.ReactElement<ListItemProps, 'li'> | React.ReactElement<ListDividerProps,'li'>>;
+  children: React.ReactElement<ListItemProps, 'li'> | React.ReactElement<DividerProps,'li'> | Array<React.ReactElement<ListItemProps, 'li'> | React.ReactElement<DividerProps,'li'>>;
   nonInteractive?:boolean;
   dense?:boolean;
   avatarList?:boolean;

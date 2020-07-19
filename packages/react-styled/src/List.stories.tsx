@@ -1,5 +1,5 @@
 import React from "react";
-import { List, ListItem, ListDivider, ListGroup, ListGroupItem, IconButton } from './index';
+import { List, ListItem, ListGroup, ListGroupItem, Divider, IconButton } from './index';
 
 export default {
   title: "List"
@@ -19,21 +19,21 @@ export const SingleLine = () => (
     <h3>List with Divider</h3>
     <List>
       <ListItem text="Single-line item 1" />
-      <ListDivider asItem />
+      <Divider tag="li" />
       <ListItem text="Single-line item 2" />
       <ListItem text="Single-line item 3" />
     </List>
     <h3>List (avatarList) with Divider inset</h3>
     <List avatarList>
       <ListItem text="Single-line item 1" contentLeft={<IconButton icon="favorite" />} />
-      <ListDivider asItem inset />
+      <Divider tag="li" inset />
       <ListItem text="Single-line item 2" contentLeft={<IconButton icon="favorite" />} />
       <ListItem text="Single-line item 3" contentLeft={<IconButton icon="favorite" />} />
     </List>
     <h3>List with Divider padded</h3>
     <List>
       <ListItem text="Single-line item 1" />
-      <ListDivider asItem padded />
+      <Divider tag="li" padded />
       <ListItem text="Single-line item 2" />
       <ListItem text="Single-line item 3" />
     </List>
@@ -43,7 +43,7 @@ export const SingleLine = () => (
       <ListItem text="Single-line item 2" />
       <ListItem text="Single-line item 3" />
     </List>
-    <ListDivider />
+    <Divider />
     <List>
       <ListItem text="Single-line item 1" />
       <ListItem text="Single-line item 2" />
@@ -55,7 +55,7 @@ export const SingleLine = () => (
       <ListItem text="Single-line item 2" contentLeft={<IconButton icon="favorite" />} />
       <ListItem text="Single-line item 3" contentLeft={<IconButton icon="favorite" />} />
     </List>
-    <ListDivider inset />
+    <Divider inset />
     <List avatarList>
       <ListItem text="Single-line item 1" contentLeft={<IconButton icon="favorite" />} />
       <ListItem text="Single-line item 2" contentLeft={<IconButton icon="favorite" />} />
@@ -67,7 +67,7 @@ export const SingleLine = () => (
       <ListItem text="Single-line item 2" />
       <ListItem text="Single-line item 3" />
     </List>
-    <ListDivider padded />
+    <Divider padded />
     <List>
       <ListItem text="Single-line item 1" />
       <ListItem text="Single-line item 2" />
@@ -130,7 +130,7 @@ export const TwoLines = () => (
     <h3>List with Divider</h3>
     <List twoLine>
       <ListItem text="Two-lines item 1" secondaryText="Sub description" />
-      <ListDivider asItem />
+      <Divider tag="li" />
       <ListItem text="Two-lines item 2" secondaryText="Sub description" />
       <ListItem text="Two-lines item 3" secondaryText="Sub description" />
     </List>
@@ -140,7 +140,7 @@ export const TwoLines = () => (
       <ListItem text="Two-lines item 2" secondaryText="Sub description" />
       <ListItem text="Two-lines item 3" secondaryText="Sub description" />
     </List>
-    <ListDivider />
+    <Divider />
     <List twoLine>
       <ListItem text="Two-lines item 1" secondaryText="Sub description" />
       <ListItem text="Two-lines item 2" secondaryText="Sub description" />
@@ -210,21 +210,21 @@ export const SingleLineDrawer = () => (
     <h3>List with Divider</h3>
     <List drawer>
       <ListItem text="Single-line item 1" />
-      <ListDivider drawer asItem />
+      <Divider drawer tag="li" />
       <ListItem text="Single-line item 2" />
       <ListItem text="Single-line item 3" />
     </List>
     <h3>List (avatarList) with Divider inset</h3>
     <List drawer avatarList>
       <ListItem text="Single-line item 1" contentLeft={<IconButton icon="favorite" />} />
-      <ListDivider drawer asItem inset />
+      <Divider drawer tag="li" inset />
       <ListItem text="Single-line item 2" contentLeft={<IconButton icon="favorite" />} />
       <ListItem text="Single-line item 3" contentLeft={<IconButton icon="favorite" />} />
     </List>
     <h3>List with Divider padded</h3>
     <List drawer>
       <ListItem text="Single-line item 1" />
-      <ListDivider drawer asItem padded />
+      <Divider drawer tag="li" padded />
       <ListItem text="Single-line item 2" />
       <ListItem text="Single-line item 3" />
     </List>
@@ -234,7 +234,7 @@ export const SingleLineDrawer = () => (
       <ListItem text="Single-line item 2" />
       <ListItem text="Single-line item 3" />
     </List>
-    <ListDivider drawer />
+    <Divider drawer />
     <List drawer>
       <ListItem text="Single-line item 1" />
       <ListItem text="Single-line item 2" />
@@ -246,7 +246,7 @@ export const SingleLineDrawer = () => (
       <ListItem text="Single-line item 2" contentLeft={<IconButton icon="favorite" />} />
       <ListItem text="Single-line item 3" contentLeft={<IconButton icon="favorite" />} />
     </List>
-    <ListDivider drawer inset />
+    <Divider drawer inset />
     <List drawer avatarList>
       <ListItem text="Single-line item 1" contentLeft={<IconButton icon="favorite" />} />
       <ListItem text="Single-line item 2" contentLeft={<IconButton icon="favorite" />} />
@@ -258,7 +258,7 @@ export const SingleLineDrawer = () => (
       <ListItem text="Single-line item 2" />
       <ListItem text="Single-line item 3" />
     </List>
-    <ListDivider drawer padded />
+    <Divider drawer padded />
     <List drawer>
       <ListItem text="Single-line item 1" />
       <ListItem text="Single-line item 2" />
