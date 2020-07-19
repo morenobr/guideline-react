@@ -5,6 +5,7 @@ import sassRuntime from 'sass';
 
 const componentNames = [
   'Button',
+  'Divider',
   'Drawer',
   'FloatingActionButton',
   'IconButton',

@@ -1,5 +1,6 @@
 import {
   Button,
+  Divider,
   Drawer,
   DrawerResponsive,
   FloatingActionButton,
@@ -9,7 +10,6 @@ import {
   TopAppBar,
   List,
   ListItem,
-  ListDivider,
   ListGroup,
   ListGroupItem,
 } from "@morenobr/guideline-react";
@@ -17,6 +17,7 @@ import "@morenobr/guideline-style/all.min.css";
 
 export {
   Button,
+  Divider,
   Drawer,
   DrawerResponsive,
   FloatingActionButton,
@@ -26,7 +27,6 @@ export {
   TopAppBar,
   List,
   ListItem,
-  ListDivider,
   ListGroup,
   ListGroupItem,
 };
