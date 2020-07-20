@@ -14,6 +14,7 @@
     - Notched Outline: https://material.io/develop/web/components/input-controls/notched-outline
     - Character Counter: https://material.io/develop/web/components/input-controls/text-field/character-counter
 - CSS Divider Component based on Material Design list divider (https://material.io/develop/web/components/lists/) and definition of Divier (https://material.io/components/dividers)
+- CSS Circular progress component based on Material Design: https://material.io/develop/web/components/circular-progress/
 
 ## TODO CSS components based on Material Design
 
@@ -22,7 +23,6 @@
 - Radio buttons: https://material.io/develop/web/components/input-controls/radio-buttons/
 - Switches: https://material.io/develop/web/components/input-controls/switches/
 - Linear progress: https://material.io/develop/web/components/linear-progress/
-- Circular progress: https://material.io/develop/web/components/circular-progress/
 - Menus: https://material.io/develop/web/components/menus/
          https://material.io/develop/web/components/menu-surface/
 - Dialog: https://material.io/develop/web/components/dialogs/

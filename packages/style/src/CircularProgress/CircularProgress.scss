@@ -1,0 +1,371 @@
+// The MIT License
+//
+// Copyright 2020 Google Inc.
+// Copyright (c) 2020 Petherson Moreno
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+@import '../vars';
+
+$circular-progress-color1: #6200ee;
+$circular-progress-color2: #ff50a0;
+$circular-progress-color3: #01a7a6;
+$circular-progress-color4: #ffa500;
+
+@mixin stroke-primary {
+  stroke: $primary;
+  stroke: var(--primary, #{$primary});
+}
+@mixin stroke-color1 {
+  stroke: $circular-progress-color1;
+  stroke: var(--circular-progress-color1, #{$circular-progress-color1});
+}
+@mixin stroke-color2 {
+  stroke: $circular-progress-color2;
+  stroke: var(--circular-progress-color2, #{$circular-progress-color2});
+}
+@mixin stroke-color3 {
+  stroke: $circular-progress-color3;
+  stroke: var(--circular-progress-color3, #{$circular-progress-color3});
+}
+@mixin stroke-color4 {
+  stroke: $circular-progress-color4;
+  stroke: var(--circular-progress-color4, #{$circular-progress-color4});
+}
+@mixin absolute-fullsize {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.mg-circular-progress {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  position: relative;
+  direction: ltr;
+  transition: opacity 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1);
+
+  //children
+  > .__determinate-container{
+    @include absolute-fullsize;
+    transform: rotate(-90deg);
+    > .__determinate-circle-graphic{
+      stroke-width: 4px;
+      fill: transparent;
+      > .__determinate-circle{
+        @include stroke-primary;
+        transition: stroke-dashoffset 500ms 0ms cubic-bezier(0, 0, 0.2, 1);
+      }
+    }
+  }
+  > .__indeterminate-container {
+    @include absolute-fullsize;
+    opacity: 0;
+    > .__spinner-layer{
+      @include absolute-fullsize;
+      > .__circle-clipper{
+        display: inline-block;
+        position: relative;
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+
+        > .__indeterminate-circle-graphic{
+          @include stroke-primary;
+          stroke-width: 4px;
+          @include absolute-fullsize;
+          fill: transparent;
+          width: 200%;
+        }
+      }
+      > .__gap-patch{
+        position: absolute;
+        top: 0;
+        left: 47.5%;
+        box-sizing: border-box;
+        width: 5%;
+        height: 100%;
+        overflow: hidden;
+        > .__indeterminate-circle-graphic{
+          @include stroke-primary;
+          stroke-width: 3.2px;
+          @include absolute-fullsize;
+          fill: transparent;
+          left: -900%;
+          width: 2000%;
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  // variants
+  &.--small {
+    width: 24px;
+    height: 24px;
+    > .__determinate-container > .__determinate-circle-graphic{
+      stroke-width: 2.5px;
+    }
+    > .__indeterminate-container > .__spinner-layer{
+      > .__circle-clipper > .__indeterminate-circle-graphic{
+        stroke-width: 2.5px;
+      }
+      > .__gap-patch > .__indeterminate-circle-graphic{
+        stroke-width: 2px;
+      }
+    }
+  }
+  &.--medium {
+    width: 36px;
+    height: 36px;
+    > .__determinate-container > .__determinate-circle-graphic{
+      stroke-width: 3px;
+    }
+    > .__indeterminate-container > .__spinner-layer{
+      > .__circle-clipper > .__indeterminate-circle-graphic{
+        stroke-width: 3px;
+      }
+      > .__gap-patch > .__indeterminate-circle-graphic{
+        stroke-width: 2.4px;
+      }
+    }
+  }
+  &.--large {
+    width: 48px;
+    height: 48px;
+    > .__determinate-container > .__determinate-circle-graphic{
+      stroke-width: 4px;
+    }
+    > .__indeterminate-container > .__spinner-layer{
+      > .__circle-clipper > .__indeterminate-circle-graphic{
+        stroke-width: 4px;
+      }
+      > .__gap-patch > .__indeterminate-circle-graphic{
+        stroke-width: 3.2px;
+      }
+    }
+  }
+  &.--extra-large {
+    width: 100px;
+    height: 100px;
+    > .__determinate-container > .__determinate-circle-graphic{
+      stroke-width: 4.5px;
+    }
+    > .__indeterminate-container > .__spinner-layer{
+      > .__circle-clipper > .__indeterminate-circle-graphic{
+        stroke-width: 4.5px;
+      }
+      > .__gap-patch > .__indeterminate-circle-graphic{
+        stroke-width: 3.9px;
+      }
+    }
+  }
+  &.--fill-parent {
+    width: 100%;
+    height: 100%;
+  }
+  &.--indeterminate{
+    > .__determinate-container {
+      opacity: 0;
+    }
+    > .__indeterminate-container {
+      opacity: 1;
+      animation: mg-circular-progress-container-rotate 1568.2352941176ms linear infinite;
+      > .__spinner-layer{
+        animation: mg-circular-progress-spinner-layer-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+        &.__color-1{
+          animation: mg-circular-progress-spinner-layer-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, 
+            mg-circular-progress-color-1-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+          > .__circle-clipper > .__indeterminate-circle-graphic,
+          > .__gap-patch > .__indeterminate-circle-graphic{
+            @include stroke-color1;
+          }
+        }
+        &.__color-2{
+          animation: mg-circular-progress-spinner-layer-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, 
+            mg-circular-progress-color-2-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+          > .__circle-clipper > .__indeterminate-circle-graphic,
+          > .__gap-patch > .__indeterminate-circle-graphic{
+            @include stroke-color2;
+          }
+        }
+        &.__color-3{
+          animation: mg-circular-progress-spinner-layer-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, 
+            mg-circular-progress-color-3-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+          > .__circle-clipper > .__indeterminate-circle-graphic,
+          > .__gap-patch > .__indeterminate-circle-graphic{
+            @include stroke-color3;
+          }
+        }
+        &.__color-4{
+          animation: mg-circular-progress-spinner-layer-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, 
+            mg-circular-progress-color-4-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+          > .__circle-clipper > .__indeterminate-circle-graphic,
+          > .__gap-patch > .__indeterminate-circle-graphic{
+            @include stroke-color4;
+          }
+        }
+        > .__circle-clipper{
+          &.__circle-left > .__indeterminate-circle-graphic {
+            animation: mg-circular-progress-left-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+          }
+          &.__circle-right > .__indeterminate-circle-graphic {
+            left: -100%;
+            animation: mg-circular-progress-right-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+          }
+        }
+      }
+    }
+  }
+  &.--closed{
+    opacity: 0;
+  }
+}
+
+@keyframes mg-circular-progress-container-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes mg-circular-progress-spinner-layer-rotate {
+  12.5% {
+    transform: rotate(135deg);
+  }
+  25% {
+    transform: rotate(270deg);
+  }
+  37.5% {
+    transform: rotate(405deg);
+  }
+  50% {
+    transform: rotate(540deg);
+  }
+  62.5% {
+    transform: rotate(675deg);
+  }
+  75% {
+    transform: rotate(810deg);
+  }
+  87.5% {
+    transform: rotate(945deg);
+  }
+  100% {
+    transform: rotate(1080deg);
+  }
+}
+@keyframes mg-circular-progress-color-1-fade-in-out {
+  from {
+    opacity: 0.99;
+  }
+  25% {
+    opacity: 0.99;
+  }
+  26% {
+    opacity: 0;
+  }
+  89% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0.99;
+  }
+  to {
+    opacity: 0.99;
+  }
+}
+@keyframes mg-circular-progress-color-2-fade-in-out {
+  from {
+    opacity: 0;
+  }
+  15% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.99;
+  }
+  50% {
+    opacity: 0.99;
+  }
+  51% {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes mg-circular-progress-color-3-fade-in-out {
+  from {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.99;
+  }
+  75% {
+    opacity: 0.99;
+  }
+  76% {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes mg-circular-progress-color-4-fade-in-out {
+  from {
+    opacity: 0;
+  }
+  65% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0.99;
+  }
+  90% {
+    opacity: 0.99;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes mg-circular-progress-left-spin {
+  from {
+    transform: rotate(265deg);
+  }
+  50% {
+    transform: rotate(130deg);
+  }
+  to {
+    transform: rotate(265deg);
+  }
+}
+@keyframes mg-circular-progress-right-spin {
+  from {
+    transform: rotate(-265deg);
+  }
+  50% {
+    transform: rotate(-130deg);
+  }
+  to {
+    transform: rotate(-265deg);
+  }
+}

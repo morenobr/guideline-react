@@ -1,4 +1,5 @@
 import Button from './Button'
+import CircularProgress from './CircularProgress'
 import Divider from './Divider'
 import Drawer from './Drawer'
 import DrawerResponsive from './DrawerResponsive'
@@ -11,6 +12,7 @@ export * from './List';
 
 export {
   Button,
+  CircularProgress,
   Divider,
   Drawer,
   DrawerResponsive,
