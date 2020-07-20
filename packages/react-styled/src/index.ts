@@ -1,5 +1,6 @@
 import {
   Button,
+  CircularProgress,
   Divider,
   Drawer,
   DrawerResponsive,
@@ -17,6 +18,7 @@ import "@morenobr/guideline-style/all.min.css";
 
 export {
   Button,
+  CircularProgress,
   Divider,
   Drawer,
   DrawerResponsive,
