@@ -1,8 +1,12 @@
-const getClassName = (classes: any | Array<string>)=>{
+const getClassName = (classes: any | Array<string>, additionalClassName?: string)=>{
+  let classNames;
   if(Array.isArray(classes)){
-    return classes.filter(k => !!k).join(' ')
+    classNames = classes;
+  } else {
+    classNames = Object.keys(classes).filter(k => !!classes[k]);
   }
-  return Object.keys(classes).filter(k => !!classes[k]).join(' ');
+  classNames.push(additionalClassName);
+  return classNames.filter(k => !!k).join(' ');
 }
 
 export default getClassName;
