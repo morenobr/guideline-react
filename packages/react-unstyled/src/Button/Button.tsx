@@ -11,6 +11,7 @@ const Button = ({
   className,
   label,
   icon,
+  iconPosition = 'left',
   touch,
   outlined,
   raised,
@@ -101,6 +102,14 @@ const Button = ({
   const onBlur = useCallback(()=>{
     setActivation(o => ({...o, state: ''}));
   }, []);
+
+  const iconReady = icon && (
+    <>
+      {typeof icon === "string" && <i className="material-icons icon" aria-hidden="true">{icon}</i>}
+      {typeof icon !== "string" && icon}
+    </>
+  );
+  
   
   return (
     <button ref={ref} className={classNamesApplied}
@@ -113,9 +122,9 @@ const Button = ({
       onClick={onClick}
       style={{...activation.styles, ...style} as CSSProperties}
       {...otherProps}>
-        {icon && typeof icon === "string" && <i className="material-icons icon" aria-hidden="true">{icon}</i>}
-        {icon && typeof icon !== "string" && icon}
+        {iconPosition === 'left' && iconReady}
         <span className="label">{label}</span>
+        {iconPosition === 'right' && iconReady}
         {touch && <span className="touch" />}
         <span className="ripple" />
     </button>
