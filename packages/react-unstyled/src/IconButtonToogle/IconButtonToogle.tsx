@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IconButtonToogleProps } from "./IconButtonToogle.types";
 import { useFontMaterialIcons } from "@morenobr/guideline-react-hooks";
+import { getClassName } from "../helpers";
 //TODO: change font material-icons control to be defined external
 
 interface IconButtonPropsWithClassname extends IconButtonToogleProps {
@@ -11,6 +12,7 @@ const IconButtonToogle = ({
   className,
   iconOn,
   iconOff,
+  title,
   ariaLabelOn,
   ariaLabelOff,
   value: valueProp = false,
@@ -27,7 +29,7 @@ const IconButtonToogle = ({
     primary: primary,
     secondary: secondary,
   }
-  const classNamesApplied = Object.keys(classes).filter(k => !!classes[k]).join(' ');
+  const classNamesApplied = getClassName(classes);
   const onClick = ()=>setValue(value =>{
     const newValue = !value;
     if(onChange){
@@ -39,6 +41,7 @@ const IconButtonToogle = ({
   return (
     <button
       className={classNamesApplied}
+      title={title}
       aria-label={ariaLabelOn}
       data-aria-label-on={ariaLabelOff}
       data-aria-label-off={ariaLabelOn}

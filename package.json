@@ -23,6 +23,7 @@
     "build": "yarn lerna-projects exec yarn build",
     "build:build": "yarn lerna-projects exec yarn build:build",
     "build:watch": "lerna exec --parallel -- yarn build:watch",
+    "build:watch-to-storybook": "lerna --scope=@morenobr/guideline-{style,react-hooks,react-unstyled,react} exec --parallel -- yarn build:watch",
     "lint": "yarn lerna-projects exec yarn lint",
     "test": "jest",
     "test:coverage": "yarn lerna-projects exec yarn test:coverage",

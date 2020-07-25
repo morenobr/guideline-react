@@ -13,8 +13,9 @@
     - Floating Label: https://material.io/develop/web/components/input-controls/floating-label
     - Notched Outline: https://material.io/develop/web/components/input-controls/notched-outline
     - Character Counter: https://material.io/develop/web/components/input-controls/text-field/character-counter
-- CSS Divider Component based on Material Design list divider (https://material.io/develop/web/components/lists/) and definition of Divier (https://material.io/components/dividers)
+- CSS Divider Component based on Material Design list divider (https://material.io/develop/web/components/lists/) and definition of Divider (https://material.io/components/dividers)
 - CSS Circular progress component based on Material Design: https://material.io/develop/web/components/circular-progress/
+- CSS Card component based on Material Design: https://material.io/develop/web/components/cards/
 
 ## TODO CSS components based on Material Design
 
@@ -28,7 +29,6 @@
 - Dialog: https://material.io/develop/web/components/dialogs/
 - Data Tables: https://material.io/develop/web/components/data-tables/
 - Chip: https://material.io/develop/web/components/chips/
-- Card: https://material.io/develop/web/components/cards/
 - Bottom Navigation: https://material.io/components/bottom-navigation
 - Slider: https://material.io/develop/web/components/input-controls/sliders/
 - Dividers: https://material.io/components/dividers
