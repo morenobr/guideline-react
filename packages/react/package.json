@@ -1,6 +1,6 @@
 {
   "name": "@morenobr/guideline-react",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Moreno Guideline components React with CSS class names defined, but without CSS",
   "main": "index.js",
   "module": "index.es.js",
@@ -75,7 +75,7 @@
     "typescript": "^3.9.5"
   },
   "dependencies": {
-    "@morenobr/guideline-react-hooks": "^0.1.3",
-    "@morenobr/guideline-react-unstyled": "^0.1.3"
+    "@morenobr/guideline-react-hooks": "^0.1.4",
+    "@morenobr/guideline-react-unstyled": "^0.1.4"
   }
 }
